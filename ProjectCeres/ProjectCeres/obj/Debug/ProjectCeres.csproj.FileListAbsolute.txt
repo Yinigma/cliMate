@@ -1,0 +1,10 @@
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\bin\Debug\ProjectCeres.exe.config
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\bin\Debug\ProjectCeres.exe
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\bin\Debug\ProjectCeres.pdb
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.csprojResolveAssemblyReference.cache
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.MainWindow.resources
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.Properties.Resources.resources
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.csproj.GenerateResource.Cache
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.exe
+c:\users\ben_kenobi\documents\visual studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.pdb
+C:\Users\Ben_Kenobi\Documents\Visual Studio 2015\Projects\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.NoiseForm.resources
