@@ -9,7 +9,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 
-namespace CliMate
+namespace ProjectCeres
 {
     //This is still beyond broken.
     class GridDisplayEquiRect

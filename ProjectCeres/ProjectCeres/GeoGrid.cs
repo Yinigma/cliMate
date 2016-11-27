@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 
-namespace CliMate
+namespace ProjectCeres
 {
     class GeoGrid
     {
@@ -144,7 +144,7 @@ namespace CliMate
                 {
                     for(int k = 0; k < 2 * frequency - 1; k++)
                     {
-                        grid[i][j][k].Weight = ((float)r.Next(255)) / 255.0f;
+                        grid[i][j][k].Value = ((float)r.Next(255)) / 255.0f;
                     }
                 }
             }
@@ -169,11 +169,11 @@ namespace CliMate
                         {
                             if (row < frequency - col)
                             {
-                                grid[i][row][col].Weight = rand[4 * i];
+                                grid[i][row][col].Value = rand[4 * i];
                             }
                             else
                             {
-                                grid[i][row][col].Weight = rand[4 * i +1];
+                                grid[i][row][col].Value = rand[4 * i +1];
                             }
                         }
                         //second half
@@ -181,11 +181,11 @@ namespace CliMate
                         {
                             if (row < 2 * frequency - col - 1)
                             {
-                                grid[i][row][col].Weight = rand[4 * i + 2];
+                                grid[i][row][col].Value = rand[4 * i + 2];
                             }
                             else
                             {
-                                grid[i][row][col].Weight = rand[4 * i + 3];
+                                grid[i][row][col].Value = rand[4 * i + 3];
                             }
                         }
                     }

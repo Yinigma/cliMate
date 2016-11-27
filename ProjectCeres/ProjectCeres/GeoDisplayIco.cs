@@ -8,56 +8,36 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 
-namespace CliMate
+namespace ProjectCeres
 {
     class GeoDisplayIco
     {
         //These just get division out of the way so the program isn't doing it every time it draws a shape 
-        const float ASPECT = (float)Screen.WIDTH / (float)Screen.HEIGHT;
+
+        float ASPECT;
         const float ROOT3 = 1.732051f;
         const float ICOASPECT = 11.0f / (ROOT3 * 3.0f);
 
         const int TOP = 0;
         const int LEFT = 1;
         const int RIGHT = 2;
+        int width;
+        int height;
 
 
-        public GameWindow window;
         private GeoGrid grid;
 
-        public GeoDisplayIco(GameWindow window, GeoGrid grid)
+        public GeoDisplayIco(int width, int height, GeoGrid grid)
         {
-            this.window = window;
             this.grid = grid;
-
-            window.Load += Window_Load;
-            window.UpdateFrame += Window_UpdateFrame;
-            window.RenderFrame += Window_RenderFrame;
-            window.Closing += Window_Closing;
-
+            this.width = width;
+            this.height = height;
+            this.ASPECT = width / height;
         }
 
         ///////////////////////////////////////////////////////////////////////////////
         //<OPENGL HOOKS>
         ///////////////////////////////////////////////////////////////////////////////
-
-        private void Window_Load(object sender, EventArgs e)
-        {
-            GL.ClearColor(Color.LightSkyBlue);
-            
-
-            GL.Viewport(0,0,Screen.WIDTH,Screen.HEIGHT);
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.Ortho(-ASPECT, ASPECT, -1, 1, -1, 1);
-
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
-        }
-        private void Window_UpdateFrame(object sender, FrameEventArgs e)
-        {
-            //GL.ClearColor(Color.LightSkyBlue);
-        }
 
         private void Window_RenderFrame(object sender, FrameEventArgs e)
         {
@@ -67,12 +47,6 @@ namespace CliMate
             this.drawGrid();
 
             GL.Flush();
-            window.SwapBuffers();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
         }
 
         ///////////////////////////////////////////////////////////////////////////////
