@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace ProjectCeres
 {
-    class GeoGrid
+    public class GeoGrid
     {
         private Tile[][][] grid;
         int frequency;

@@ -11,12 +11,10 @@ using System.Drawing;
 
 namespace ProjectCeres
 {
-    //This is still beyond broken.
-    class GridDisplayEquiRect
+    public class GridDisplayEquiRect
     {
 
-        //Some of these I can switch to local vars in the constructor later. I wanna get it working first, though...
-        GameWindow window;
+        //Some of these I can switch to local vars in the constructor later. I wanna get it working first though...
         Hexagon[] hexList;
         Color[] colors;
         int numSubs;
@@ -58,11 +56,11 @@ namespace ProjectCeres
 
         };
 
-        private class Hexagon
+        public class Hexagon
         {
 
             public Vector3[] points;
-            public Vector2[] equiVec;
+            public PointF[] equiVec;
             bool proj;
             public bool isEdge;
             public float weight;
@@ -79,7 +77,7 @@ namespace ProjectCeres
                 proj = false;
                 isEdge = false;
                 weight = 0.0f;
-                equiVec = new Vector2[6];
+                equiVec = new PointF[6];
                 tile = null;
             }
             public void project()
@@ -96,7 +94,7 @@ namespace ProjectCeres
                     float phi = (float) Math.Acos(points[i].Z/r);
                     float theta = (float)Math.Atan(points[i].Y/ points[i].X);
 
-                    equiVec[i] = new Vector2();
+                    equiVec[i] = new PointF();
                     equiVec[i].X = 2 * (theta / (2 * (float)Math.PI) + offset) + 0.5f;
                     equiVec[i].Y = 2 * (phi / ((float)Math.PI)-0.5f);
                     if (equiVec[i].X > 1.0f)
@@ -139,7 +137,7 @@ namespace ProjectCeres
             }
         };
 
-        public GridDisplayEquiRect(int numSubs, GameWindow window)
+        public GridDisplayEquiRect(int numSubs)
         {
             this.numSubs = numSubs;
             Triangle[] ico = new Triangle[20];
@@ -233,19 +231,12 @@ namespace ProjectCeres
             {
                 hexList[i].project();
             }
-
-            this.window = window;
-
-            window.Load += Window_Load;
-            window.UpdateFrame += Window_UpdateFrame;
-            window.RenderFrame += Window_RenderFrame;
-            window.Closing += Window_Closing;
             
 
 
         }
 
-        private void Window_Load(object sender, EventArgs e)
+        /*private void Window_Load(object sender, EventArgs e)
         {
             GL.ClearColor(Color.LightSkyBlue);
 
@@ -257,12 +248,7 @@ namespace ProjectCeres
             GL.LoadIdentity();
             GL.Scale(-1.0f, 1.0f, 1.0f);
             GL.Rotate(180, 0.0f, 0.0f, 1.0f);
-        }
-
-        private void Window_UpdateFrame(object sender, FrameEventArgs e)
-        {
-            
-        }
+        }*/
 
         private void Window_RenderFrame(object sender, FrameEventArgs e)
         {
@@ -289,7 +275,6 @@ namespace ProjectCeres
                 {
                     drawProj(hexList[i], c);
                 }
-                
             }
             count++;
             if (count >= hexList.Length)
@@ -297,14 +282,11 @@ namespace ProjectCeres
                 count %= hexList.Length;
             }
             GL.Flush();
-            window.SwapBuffers();
+            //window.SwapBuffers();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
 
-        }
-
+        //Calculates a triangular number
         private int Triangular(int tri)
         {
             return (tri + 1) * tri / 2;
@@ -649,5 +631,7 @@ namespace ProjectCeres
             }
 
         }
+
+        public Hexagon[] dispHex { get { return this.hexList; } }
     }
 }

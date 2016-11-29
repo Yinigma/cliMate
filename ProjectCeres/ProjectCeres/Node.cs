@@ -123,7 +123,6 @@ namespace ProjectCeres
             {
                 mask = kiddo;
             }
-            MessageBox.Show("Dex: " + dex + "\nAmount of kids: " + children.Length);
         }
 
         public virtual Bitmap ToBitmap()

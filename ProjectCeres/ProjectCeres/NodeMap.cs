@@ -78,7 +78,6 @@ namespace ProjectCeres
             //If the destination socket is already occupied
             if (e.n2.node.getChild(e.dex)!= null|| e.n1.node.Parent!=null)
             {
-                MessageBox.Show("There's something where I wanna put this edge.");
                 foreach (Edge hay in Connections)
                 {
                     //For the kids that try and be redundant
@@ -113,7 +112,6 @@ namespace ProjectCeres
                 }
                 if (!foundConflict)
                 {
-                    MessageBox.Show("Socket was occupied but no edge with such socket was found in the list! Serious bad mojo!");
                     return;
                 }
             }
@@ -121,23 +119,21 @@ namespace ProjectCeres
             e.n1.node.Parent = e.n2.node;
             e.n2.node.setInputNode(e.n1.node, e.dex);
             connections.Add(e);
+            /*
+             * Debug bullshit. Do not eat.
             foreach (Edge ed in Connections)
             {
                 MessageBox.Show(EdgeToString(ed));
             }
+            */
         }
         public void removeEdge(Edge e)
         {
-            MessageBox.Show("I'm gonna try to get rid of something...");
             e.n1.node.Parent = null;
             e.n2.node.setInputNode(null, e.dex);
             int remDex = FindEdge(e);
             Connections.Remove(Connections.ElementAt(remDex));
             //It's becoming evident that I have no fucking clue what is good practice with these
-        }
-        public void removeOld()
-        {
-
         }
         //When ur data is garbage but there ain't much of it
         //X'D X'D X'D X'D OK

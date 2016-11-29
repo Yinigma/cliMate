@@ -18,3 +18,9 @@ C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\obj\Debug\
 C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.NoiseForm.resources
 C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.Properties.Resources.resources
 C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\obj\Debug\ProjectCeres.csproj.GenerateResource.Cache
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\OpenTK.dll
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\OpenTK.GLControl.dll
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\OpenTK.xml
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\OpenTK.GLControl.xml
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\SharpNoise.dll
+C:\Users\Ben_Kenobi\Documents\Project Ceres\ProjectCeres\ProjectCeres\bin\Debug\SharpNoise.xml

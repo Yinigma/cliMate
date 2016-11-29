@@ -157,13 +157,13 @@
             // 
             // OKButton
             // 
-            this.OKButton.Enabled = false;
             this.OKButton.Location = new System.Drawing.Point(48, 490);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 18;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // previewBox
             // 
