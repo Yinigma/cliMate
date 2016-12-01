@@ -9,10 +9,13 @@ namespace ProjectCeres
 {
     public class RectGrid
     {
+        public const float MAX = 1.0f;
+        public const float MIN = 0.0f;
         Tile[][] grid;
         private int width;
         public int Width { get { return width; } }
         private int height;
+        public int Height { get { return height; } }
         //Yeah, you can make this whatever size you want, but this should always be projectWidth/Height
         //I just found it weird to have a project as a parameter. Project settings? Huh...
         //Maybe we should leave it as is anyway. Flexibility and all that jazz.

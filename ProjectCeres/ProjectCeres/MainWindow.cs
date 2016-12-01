@@ -102,6 +102,10 @@ namespace ProjectCeres
         {
             nodePanel.CurrentNode = NodePanel.NOISE;
         }
+        private void DrawMapButton_Click(object sender, EventArgs e)
+        {
+            nodePanel.CurrentNode = NodePanel.DRAW;
+        }
 
         private void mapDisplay_Click(object sender, EventArgs e)
         {
@@ -113,5 +117,7 @@ namespace ProjectCeres
                 g.DrawImage(selectedNode.ToBitmap(),new Point(0,0));
             }
         }
+
+       
     }
 }

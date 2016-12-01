@@ -58,8 +58,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Canvas.Designer.cs">
+      <DependentUpon>Canvas.cs</DependentUpon>
+    </Compile>
     <Compile Include="DebugNode.cs" />
     <Compile Include="DebugNode2.cs" />
+    <Compile Include="DrawNode.cs" />
+    <Compile Include="FileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileForm.Designer.cs">
+      <DependentUpon>FileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileNode.cs" />
     <Compile Include="GeoDisplayIco.cs" />
     <Compile Include="GeoGrid.cs" />
@@ -92,6 +105,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RectGrid.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WidthHeightDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WidthHeightDialog.Designer.cs">
+      <DependentUpon>WidthHeightDialog.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Canvas.resx">
+      <DependentUpon>Canvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileForm.resx">
+      <DependentUpon>FileForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +134,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WidthHeightDialog.resx">
+      <DependentUpon>WidthHeightDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

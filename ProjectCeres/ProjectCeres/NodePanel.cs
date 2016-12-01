@@ -21,6 +21,7 @@ namespace ProjectCeres
         public const int DEBUG = 3;
         public const int DEBUG2 = 4;
         public const int NOISE = 5;
+        public const int DRAW = 6;
 
         private int currentNode;
         public int CurrentNode { get { return currentNode; } set { currentNode = value; } }
@@ -179,6 +180,11 @@ namespace ProjectCeres
             else if (currentNode == NOISE)
             {
                 toAdd.node = new NoiseNode(map);
+                set = true;
+            }
+            else if (currentNode == DRAW)
+            {
+                toAdd.node = new DrawNode(map);
                 set = true;
             }
             if (set) {

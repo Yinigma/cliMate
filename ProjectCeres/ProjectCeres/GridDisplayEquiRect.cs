@@ -632,6 +632,14 @@ namespace ProjectCeres
 
         }
 
+        /*public GeoGrid RectToGeo(RectGrid input)
+        {
+            for()
+            {
+
+            }
+        }*/
+
         public Hexagon[] dispHex { get { return this.hexList; } }
     }
 }
