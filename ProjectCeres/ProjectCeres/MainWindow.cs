@@ -15,32 +15,42 @@ namespace ProjectCeres
         Project currentProject;
         NodeMap map;
         Node selectedNode;
+        private static readonly ColorGrad.gradElement[][] DISPMODES = { ColorGrad.LandGradient, ColorGrad.tempGradient };
 
         public MainWindow()
         {
             
             InitializeComponent();
             testPanel.Click += TestPanel_Click;
+            //DisplayOptionBox.
             currentProject = new Project();
             nodePanel.Map = currentProject.getMap();
             nodePanel.CurrentNode = NodePanel.NONE;
             selectedNode = null;
+            mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
+            DisplayOptionBox.SelectedIndex = 0;
         }
 
         //Draws the equiGrid
         private void TestPanel_Click(object sender, EventArgs e)
         {
+            if(selectedNode == null)
+            {
+                return;
+            }
             Random r = new Random();
             Graphics g = testPanel.CreateGraphics();
             SolidBrush b = new SolidBrush(Color.Red);
             GridDisplayEquiRect.Hexagon[] hexList = currentProject.EquiDisp.dispHex;
+            GeoGrid geo = new GeoGrid(currentProject.Frequency);
             PointF[] curHex = new PointF[6];
             float offX = testPanel.Width / 2.0f;
             float offY = testPanel.Height / 2.0f;
             int brightness;
+            currentProject.EquiDisp.RectToGeo(selectedNode.getOutputGrid(), geo);
             for (int i = 0; i< hexList.Length; i++)
             {
-                brightness = r.Next(256);
+                brightness = (int)(hexList[i].tile.Value*255);
                 b.Color = Color.FromArgb(brightness,brightness,brightness);
                 if (!hexList[i].isEdge)
                 {
@@ -109,15 +119,13 @@ namespace ProjectCeres
 
         private void mapDisplay_Click(object sender, EventArgs e)
         {
-            
             selectedNode = nodePanel.Selected;
             if (selectedNode != null)
             {
-                Graphics g = this.mapDisplay.CreateGraphics();
-                g.DrawImage(selectedNode.ToBitmap(),new Point(0,0));
+                    mapDisplay.Image = selectedNode.ToBitmap(DISPMODES[DisplayOptionBox.SelectedIndex]);
             }
         }
 
-       
+        
     }
 }

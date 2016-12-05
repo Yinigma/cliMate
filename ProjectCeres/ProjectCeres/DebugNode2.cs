@@ -20,7 +20,18 @@ namespace ProjectCeres
             {
                 for (int col = 0; col < map.Width; col++)
                 {
-                    outGrid.setTile(row, col, (float)r.NextDouble());
+                    if (row > (map.Height - 95))
+                    {
+                        outGrid.setTile(row, col, 0.0f);
+                    }
+                    else if (col > (map.Width - 95))
+                    {
+                        outGrid.setTile(row, col, 0.0f);
+                    }
+                    else
+                    {
+                        outGrid.setTile(row, col, (float)r.NextDouble());
+                    }
                 }
             }
         }

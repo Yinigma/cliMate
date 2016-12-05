@@ -19,35 +19,48 @@ namespace ProjectCeres
         //Yeah, you can make this whatever size you want, but this should always be projectWidth/Height
         //I just found it weird to have a project as a parameter. Project settings? Huh...
         //Maybe we should leave it as is anyway. Flexibility and all that jazz.
-        public RectGrid(int xres, int yres)
+        public RectGrid(int numRows, int numCols)
         {
-            grid = new Tile[xres][];
-            for (int x = 0; x < xres; x++)
+            grid = new Tile[numRows][];
+            for (int r = 0; r < numRows; r++)
             {
-                grid[x] = new Tile[yres];
-                for (int y = 0; y < yres; y++)
+                grid[r] = new Tile[numCols];
+                for (int c = 0; c < numCols; c++)
                 {
-                    grid[x][y] = new Tile(0);
+                    grid[r][c] = new Tile(0);
                 }
             }
-            this.width = xres;
-            this.height = yres;
+            width = numCols;
+            height = numRows;
         }
 
         public Bitmap gridToBitmap()
         {
-            Bitmap img = new Bitmap(grid.Length, grid[0].Length);
-            for (int x = 0; x < grid.Length; x++)
+            Bitmap img = new Bitmap(width, height);
+            for (int r = 0; r < height; r++)
             {
-                for (int y = 0; y < grid[x].Length; y++)
+                for (int c = 0; c < width; c++)
                 {
-                    img.SetPixel(x, y, grid[x][y].getColor());
+                    img.SetPixel(c, r, grid[r][c].getColor());
                 }
             }
             return img;
         }
 
-        public void setTile(int x, int y, float val) { grid[x][y].Value = val; }
-        public Tile getTile(int x, int y) { return grid[x][y]; }
+        public Bitmap gridToBitmap(ColorGrad.gradElement[] grad)
+        {
+            Bitmap img = new Bitmap(width, height);
+            for (int r = 0; r < height; r++)
+            {
+                for (int c = 0; c < width; c++)
+                {
+                    img.SetPixel(c, r, ColorGrad.getGradColor(grad, grid[r][c].Value));
+                }
+            }
+            return img;
+        }
+
+        public void setTile(int row, int col, float val) { grid[row][col].Value = val; }
+        public Tile getTile(int row, int col) { return grid[row][col]; }
     }
 }

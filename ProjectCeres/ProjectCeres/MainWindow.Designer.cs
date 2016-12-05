@@ -33,6 +33,7 @@ namespace ProjectCeres
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.MainTabs = new System.Windows.Forms.TabControl();
             this.NodeTab = new System.Windows.Forms.TabPage();
+            this.nodePanel = new ProjectCeres.NodePanel();
             this.NodeToolStrip = new System.Windows.Forms.ToolStrip();
             this.fileImportButton = new System.Windows.Forms.ToolStripButton();
             this.perlinNoiseButton = new System.Windows.Forms.ToolStripButton();
@@ -58,7 +59,6 @@ namespace ProjectCeres
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nodePanel = new ProjectCeres.NodePanel();
             this.MainTabs.SuspendLayout();
             this.NodeTab.SuspendLayout();
             this.NodeToolStrip.SuspendLayout();
@@ -91,6 +91,15 @@ namespace ProjectCeres
             this.NodeTab.Text = "Nodes";
             this.NodeTab.UseVisualStyleBackColor = true;
             // 
+            // nodePanel
+            // 
+            this.nodePanel.CurrentNode = 0;
+            this.nodePanel.Location = new System.Drawing.Point(30, 0);
+            this.nodePanel.Map = null;
+            this.nodePanel.Name = "nodePanel";
+            this.nodePanel.Size = new System.Drawing.Size(808, 387);
+            this.nodePanel.TabIndex = 1;
+            // 
             // NodeToolStrip
             // 
             this.NodeToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
@@ -111,7 +120,7 @@ namespace ProjectCeres
             this.NodeToolStrip.Location = new System.Drawing.Point(3, 3);
             this.NodeToolStrip.Name = "NodeToolStrip";
             this.NodeToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.NodeToolStrip.Size = new System.Drawing.Size(32, 381);
+            this.NodeToolStrip.Size = new System.Drawing.Size(24, 381);
             this.NodeToolStrip.TabIndex = 0;
             this.NodeToolStrip.Text = "toolStrip1";
             // 
@@ -121,7 +130,7 @@ namespace ProjectCeres
             this.fileImportButton.Image = global::ProjectCeres.Properties.Resources.file;
             this.fileImportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileImportButton.Name = "fileImportButton";
-            this.fileImportButton.Size = new System.Drawing.Size(29, 20);
+            this.fileImportButton.Size = new System.Drawing.Size(21, 20);
             this.fileImportButton.Text = "FileButton";
             this.fileImportButton.Click += new System.EventHandler(this.fileImportButton_Click);
             // 
@@ -131,7 +140,7 @@ namespace ProjectCeres
             this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin;
             this.perlinNoiseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.perlinNoiseButton.Name = "perlinNoiseButton";
-            this.perlinNoiseButton.Size = new System.Drawing.Size(29, 20);
+            this.perlinNoiseButton.Size = new System.Drawing.Size(21, 20);
             this.perlinNoiseButton.Text = "noiseButton";
             this.perlinNoiseButton.Click += new System.EventHandler(this.perlinNoiseButton_Click);
             // 
@@ -141,7 +150,7 @@ namespace ProjectCeres
             this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics;
             this.plateSimButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.plateSimButton.Name = "plateSimButton";
-            this.plateSimButton.Size = new System.Drawing.Size(29, 20);
+            this.plateSimButton.Size = new System.Drawing.Size(21, 20);
             this.plateSimButton.Text = "tectonicButton";
             // 
             // DrawMapButton
@@ -150,14 +159,14 @@ namespace ProjectCeres
             this.DrawMapButton.Image = ((System.Drawing.Image)(resources.GetObject("DrawMapButton.Image")));
             this.DrawMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawMapButton.Name = "DrawMapButton";
-            this.DrawMapButton.Size = new System.Drawing.Size(29, 20);
+            this.DrawMapButton.Size = new System.Drawing.Size(21, 20);
             this.DrawMapButton.Text = "drawButton";
             this.DrawMapButton.Click += new System.EventHandler(this.DrawMapButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(21, 6);
             // 
             // toolStripButton5
             // 
@@ -165,7 +174,7 @@ namespace ProjectCeres
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton5.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton5.Text = "toolStripButton5";
             // 
             // toolStripButton6
@@ -174,7 +183,7 @@ namespace ProjectCeres
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton6.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton6.Text = "toolStripButton6";
             // 
             // toolStripButton7
@@ -183,13 +192,13 @@ namespace ProjectCeres
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton7.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton7.Text = "toolStripButton7";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(21, 6);
             // 
             // outputButton
             // 
@@ -197,14 +206,14 @@ namespace ProjectCeres
             this.outputButton.Image = ((System.Drawing.Image)(resources.GetObject("outputButton.Image")));
             this.outputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.outputButton.Name = "outputButton";
-            this.outputButton.Size = new System.Drawing.Size(29, 20);
+            this.outputButton.Size = new System.Drawing.Size(21, 20);
             this.outputButton.Text = "toolStripButton1";
             this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(21, 6);
             // 
             // debugButton
             // 
@@ -212,7 +221,7 @@ namespace ProjectCeres
             this.debugButton.Image = ((System.Drawing.Image)(resources.GetObject("debugButton.Image")));
             this.debugButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugButton.Name = "debugButton";
-            this.debugButton.Size = new System.Drawing.Size(29, 20);
+            this.debugButton.Size = new System.Drawing.Size(21, 20);
             this.debugButton.Text = "DebugNoise";
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
@@ -222,7 +231,7 @@ namespace ProjectCeres
             this.debugInputButton.Image = ((System.Drawing.Image)(resources.GetObject("debugInputButton.Image")));
             this.debugInputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugInputButton.Name = "debugInputButton";
-            this.debugInputButton.Size = new System.Drawing.Size(29, 20);
+            this.debugInputButton.Size = new System.Drawing.Size(21, 20);
             this.debugInputButton.Text = "debugInput";
             this.debugInputButton.Click += new System.EventHandler(this.debugInputButton_Click);
             // 
@@ -265,9 +274,9 @@ namespace ProjectCeres
             // mapDisplay
             // 
             this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
-            this.mapDisplay.Location = new System.Drawing.Point(148, 0);
+            this.mapDisplay.Location = new System.Drawing.Point(205, 0);
             this.mapDisplay.Name = "mapDisplay";
-            this.mapDisplay.Size = new System.Drawing.Size(690, 386);
+            this.mapDisplay.Size = new System.Drawing.Size(633, 387);
             this.mapDisplay.TabIndex = 0;
             this.mapDisplay.TabStop = false;
             this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
@@ -326,15 +335,6 @@ namespace ProjectCeres
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "Save...";
-            // 
-            // nodePanel
-            // 
-            this.nodePanel.CurrentNode = 0;
-            this.nodePanel.Location = new System.Drawing.Point(30, 0);
-            this.nodePanel.Map = null;
-            this.nodePanel.Name = "nodePanel";
-            this.nodePanel.Size = new System.Drawing.Size(808, 387);
-            this.nodePanel.TabIndex = 1;
             // 
             // MainWindow
             // 

@@ -632,13 +632,24 @@ namespace ProjectCeres
 
         }
 
-        /*public GeoGrid RectToGeo(RectGrid input)
+        public void RectToGeo(RectGrid input, GeoGrid g)
         {
-            for()
+            LoadGrid(g);
+            int nearestX;
+            int nearestY;
+            float curAverage;
+            for(int i = 0; i < hexList.Length; i++)
             {
-
+                curAverage = 0;
+                for(int j = 0; j < 6; j++)
+                {
+                    nearestX = (int)(((input.Width-1) / 2)*(hexList[i].equiVec[j].X + 1));
+                    nearestY = (int)(((input.Height-1) / 2) * (hexList[i].equiVec[j].Y + 1));
+                    curAverage += input.getTile(nearestY, nearestX).Value;
+                }
+                hexList[i].tile.Value = curAverage / 6.0f;
             }
-        }*/
+        }
 
         public Hexagon[] dispHex { get { return this.hexList; } }
     }

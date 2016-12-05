@@ -135,6 +135,134 @@ namespace ProjectCeres
             return frequency;
         }
 
+        public Tile[] neighbors(int row, int col, int par)
+        {
+            //I'm gonna fucking kill myself debugging this.
+            Tile[] mates = new Tile[6];
+            for(int i = 0; i<6; i++)
+            {
+                mates[i] = null;
+            }
+            if (row == 0)
+            {
+                if (col == 0)
+                {
+                    //Corner Case: upper left pentagon
+                    mates = new Tile[5];
+                    for(int i = 0; i< NUMPARA; i++)
+                    {
+                        mates[i] = grid[i][1][0];
+                    }
+                    return mates;
+                }
+                else if(col < frequency - 1)
+                {
+                    //edge case: upper left edge
+                    mates[2] = grid[(par + 1) % (NUMPARA)][col][1];
+                    mates[3] = grid[(par + 1) % (NUMPARA)][col+1][1];
+                }
+                else if (col==2*frequency-2)
+                {
+                    //Corner case: upper right pentagon
+                    mates = new Tile[5];
+                    mates[0] = grid[par][row-1][col-1];
+                    mates[1] = grid[par][row][col - 1];
+                    mates[2] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1)];
+                    mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1) + 1];
+                    mates[4] = grid[par][row-1][col];
+                    return mates;
+                }
+                else if(col > frequency - 1)
+                {
+                    //upper right edge
+                    mates[2] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1)];
+                    mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1) + 1];
+                }
+                else
+                {
+                    //Corner case: upper middle pentagon
+                    mates = new Tile[5];
+                    mates[0] = grid[par][1][col - 1];
+                    mates[0] = grid[par][0][col - 1];
+                    mates[2] = grid[(par + 1) % (NUMPARA)][frequency-1][1];
+                    mates[0] = grid[par][0][col + 1];
+                    mates[0] = grid[par][1][col];
+                    return mates;
+                }
+            }
+            if (row == frequency - 1)
+            {
+                int nextPara = (par == 0) ? NUMPARA - 1 : par - 1;
+                if (col == 0)
+                {
+                    //Corner Case: lower left pentagon
+                    mates = new Tile[5];
+                    mates[0] = grid[nextPara][1][frequency-2];
+                    mates[1] = grid[par][row - 1][col];
+                    mates[2] = grid[par][row - 1][col + 1];
+                    mates[3] = grid[par][row][col + 1];
+                    mates[4] = grid[nextPara][1][frequency - 1];
+                    return mates;
+                }
+                else if (col < frequency - 1)
+                {
+                    //edge case: lower left edge
+                    mates[5] = grid[nextPara][1][frequency - 1 + col];
+                    mates[0] = grid[nextPara][1][frequency - 2 + col];
+                }
+                else if (col == 2 * frequency - 2)
+                {
+                    //Corner case: lower right pentagon
+                    mates = new Tile[5];
+                    for (int i = 0; i < NUMPARA; i++)
+                    {
+                        mates[i] = grid[i][frequency-1][2 * frequency - 3];
+                    }
+                    return mates;
+                }
+                else if (col > frequency - 1)
+                {
+                    //edge case: lower right edge
+                    mates[5] = grid[nextPara][col-(frequency-1)][2 * frequency - 3];
+                    mates[0] = grid[nextPara][col-(frequency-1)-1][2 * frequency - 3];
+                }
+                else
+                {
+                    //Corner case: lower middle pentagon
+                    mates = new Tile[5];
+                    mates[0] = grid[nextPara][1][2 * frequency - 3];
+                    mates[1] = grid[par][row][col - 1];
+                    mates[2] = grid[par][row - 1][col];
+                    mates[3] = grid[par][row - 1][col + 1];
+                    mates[4] = grid[par][row][col + 1];
+                    return mates;
+                }
+            }
+            if (col == 0)
+            {
+                //Edge case: left edge
+                int nextPara = (par == 0) ? NUMPARA - 1 : par - 1;
+                mates[0] = grid[nextPara][1][row+1];
+                mates[1] = grid[nextPara][1][row];
+
+            }
+            if(col == frequency * 2 - 2)
+            {
+                //Edge case: Right edge
+                mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency - 2 + row];
+                mates[4] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency - 1 + row];
+            }
+            //I bet you could do this with a for loop and mod ops
+            //but fuck that, it's 2 am
+            if (mates[0] != null) { mates[0] = grid[par][row+1][col-1]; }
+            if (mates[1] != null) { mates[1] = grid[par][row][col-1]; }
+            if (mates[2] != null) { mates[2] = grid[par][row-1][col]; }
+            if (mates[3] != null) { mates[3] = grid[par][row-1][col+1]; }
+            if (mates[4] != null) { mates[4] = grid[par][row][col+1]; }
+            if (mates[5] != null) { mates[5] = grid[par][row+1][col]; }
+            return mates;
+        }
+
         public void DBrandom()
         {
             Random r = new Random();

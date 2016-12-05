@@ -12,22 +12,25 @@ namespace ProjectCeres
         private int Height;
         private int frequency;
         private NodeMap map;
+        private float seaLevel;
         private GridDisplayEquiRect equiDisp;
 
 
 
-        public Project(int w, int h, int f)
+        public Project(int w, int h, int f, float sl)
         {
             Width = w;
             Height = h;
             frequency = f;
+            seaLevel = sl;
             equiDisp = new GridDisplayEquiRect(frequency);
             map = new NodeMap(Width, Height);
         }
         public Project(){
             Width = 640;
             Height = 480;
-            frequency = 4;
+            frequency = 6;
+            seaLevel = 0.55f;
             equiDisp = new GridDisplayEquiRect(frequency);
             map = new NodeMap(Width, Height);
         }
@@ -36,6 +39,8 @@ namespace ProjectCeres
             return map;
         }
         public GridDisplayEquiRect EquiDisp { get { return equiDisp; } }
+        public int Frequency { get { return frequency; } }
+        public float SeaLevel { get { return seaLevel; } }
 
     }
 }

@@ -18,8 +18,7 @@ namespace ProjectCeres
         //Scale of the uploded bitmap
         private float xScale;
         private float yScale;
-        //Image being displayed in the preview box that will be sent to the node
-        private Bitmap image;
+        //private Bitmap image;
         private Bitmap currentImage;
         private FileNode node;
         private int projectWidth;
@@ -39,8 +38,6 @@ namespace ProjectCeres
             xScale = 1.0f;
             yScale = 1.0f;
             node = fn;
-            image = new Bitmap(node.getOutputGrid().Width, node.getOutputGrid().Height);
-            previewBox.Image = image;
             currentImage = null;
             /*xBox.ReadOnly = true;
             yBox.ReadOnly = true;
@@ -99,24 +96,24 @@ namespace ProjectCeres
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Purple things");
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.bmp, *.png) | *.jpg; *.jpeg; *.jpe; *.bmp; *.png";
             ofd.Title = "Heightmap from file";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 currentImage = new Bitmap(ofd.FileName);
+                MessageBox.Show("Project width = "+projectWidth);
+                xScale = (float)projectWidth / currentImage.Width;
+                yScale = (float)projectHeight / currentImage.Height;
+                okButton.Enabled = true;
+                isValid = true;
+                loadPreview();
             }
-            MessageBox.Show("A flie dialog should have opened.");
             /*xBox.ReadOnly = false;
             yBox.ReadOnly = false;
             xScaleBox.ReadOnly = false;
             xScaleBox.ReadOnly = false;*/
-            xScale = (float)projectWidth / currentImage.Width;
-            yScale = (float)projectHeight / currentImage.Height;
-            okButton.Enabled = true;
-            isValid = true;
-            loadPreview();
+            
         }
         public void loadPreview()
         {
@@ -135,12 +132,12 @@ namespace ProjectCeres
                 previewBox.Update();
             }
         }
-        bool Valid { get { return isValid; } }
-        float XScale { get { return xScale; } }
-        float YScale { get { return yScale; } }
-        int XPosition { get { return xPos; } }
-        int YPosition { get { return yPos; } }
-        Bitmap LoadedImage { get { return currentImage; } }
+        public bool Valid { get { return isValid; } }
+        public float XScale { get { return xScale; } }
+        public float YScale { get { return yScale; } }
+        public int XPosition { get { return xPos; } }
+        public int YPosition { get { return yPos; } }
+        public Bitmap LoadedImage { get { return currentImage; } }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {

@@ -58,12 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Biomes.cs" />
     <Compile Include="Canvas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Canvas.Designer.cs">
       <DependentUpon>Canvas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColorGrad.cs" />
     <Compile Include="DebugNode.cs" />
     <Compile Include="DebugNode2.cs" />
     <Compile Include="DrawNode.cs" />

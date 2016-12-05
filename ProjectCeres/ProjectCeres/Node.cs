@@ -138,6 +138,19 @@ namespace ProjectCeres
             return bmp;
         }
 
+        public virtual Bitmap ToBitmap(ColorGrad.gradElement[] grad)
+        {
+            Bitmap bmp = new Bitmap(map.Width, map.Height);
+            for (int col = 0; col < map.Width; col++)
+            {
+                for (int row = 0; row < map.Height; row++)
+                {
+                    bmp.SetPixel(col, row, ColorGrad.getGradColor(grad, outGrid.getTile(row, col).Value));
+                }
+            }
+            return bmp;
+        }
+
         public int numInputs() { return children.Length; }
 
         public Node Mask { get { return mask; } set { mask = value; } }

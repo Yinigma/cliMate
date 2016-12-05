@@ -22,7 +22,7 @@ namespace ProjectCeres
             {
                 for (int col = 0; col < map.Width; col++)
                 {
-                    outGrid.setTile(row,col,(float)r.NextDouble());
+                    outGrid.setTile(row,col, (float)row/map.Width);
                 }
             }
         }
