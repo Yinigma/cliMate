@@ -102,7 +102,6 @@ namespace ProjectCeres
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 currentImage = new Bitmap(ofd.FileName);
-                MessageBox.Show("Project width = "+projectWidth);
                 xScale = (float)projectWidth / currentImage.Width;
                 yScale = (float)projectHeight / currentImage.Height;
                 okButton.Enabled = true;

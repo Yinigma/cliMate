@@ -12,6 +12,7 @@ namespace ProjectCeres
 {
     public partial class MainWindow : Form
     {
+        int counterDB;
         Project currentProject;
         NodeMap map;
         Node selectedNode;
@@ -29,16 +30,21 @@ namespace ProjectCeres
             selectedNode = null;
             mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
             DisplayOptionBox.SelectedIndex = 0;
+            counterDB = 0;
         }
 
         //Draws the equiGrid
         private void TestPanel_Click(object sender, EventArgs e)
         {
-            if(selectedNode == null)
+            renderGrid();
+        }
+
+        public void renderGrid()
+        {
+            if (selectedNode == null)
             {
                 return;
             }
-            Random r = new Random();
             Graphics g = testPanel.CreateGraphics();
             SolidBrush b = new SolidBrush(Color.Red);
             GridDisplayEquiRect.Hexagon[] hexList = currentProject.EquiDisp.dispHex;
@@ -47,11 +53,26 @@ namespace ProjectCeres
             float offX = testPanel.Width / 2.0f;
             float offY = testPanel.Height / 2.0f;
             int brightness;
-            currentProject.EquiDisp.RectToGeo(selectedNode.getOutputGrid(), geo);
-            for (int i = 0; i< hexList.Length; i++)
+
+            RectGrid moisture = Biomes.moisture(selectedNode.getOutputGrid(), currentProject,6);
+            currentProject.EquiDisp.RectToGeo(moisture, geo);
+
+            //currentProject.EquiDisp.RectToGeo(selectedNode.getOutputGrid(), geo);
+
+
+            //geo = Biomes.seaLevel(geo, currentProject);
+            //currentProject.EquiDisp.LoadGrid(geo);
+
+            /*Tile[] mates = geo.neighbors(0,geo.getFrequency()-1,1);
+            for(int i=0; i<mates.Length; i++)
             {
-                brightness = (int)(hexList[i].tile.Value*255);
-                b.Color = Color.FromArgb(brightness,brightness,brightness);
+                mates[i].Value = 0.1f * i;
+            }*/
+
+            for (int i = 0; i < hexList.Length; i++)
+            {
+                brightness = (int)(hexList[i].tile.Value * 255);
+                b.Color = Color.FromArgb(brightness, brightness, brightness);
                 if (!hexList[i].isEdge)
                 {
                     for (int j = 0; j < 6; j++)
@@ -88,6 +109,7 @@ namespace ProjectCeres
                     g.FillPolygon(b, curHex);
                 }
             }
+            counterDB++;
             testPanel.Update();
         }
 
@@ -122,7 +144,19 @@ namespace ProjectCeres
             selectedNode = nodePanel.Selected;
             if (selectedNode != null)
             {
-                    mapDisplay.Image = selectedNode.ToBitmap(DISPMODES[DisplayOptionBox.SelectedIndex]);
+                if (DisplayOptionBox.SelectedIndex == 0)
+                {
+                    mapDisplay.Image = selectedNode.getOutputGrid().gridToBitmapOcean(ColorGrad.LandGradient,ColorGrad.OceanGradient,currentProject.SeaLevel);
+                }
+                else if (DisplayOptionBox.SelectedIndex == 1)
+                {
+                    mapDisplay.Image = selectedNode.ToBitmap();
+                }
+                else if (DisplayOptionBox.SelectedIndex == 2)
+                {
+                    RectGrid moisture = Biomes.moisture(selectedNode.getOutputGrid(),currentProject, 3*currentProject.Frequency);
+                    mapDisplay.Image = moisture.gridToBitmap(ColorGrad.MoistureGradient);
+                }
             }
         }
 

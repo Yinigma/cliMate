@@ -236,56 +236,6 @@ namespace ProjectCeres
 
         }
 
-        /*private void Window_Load(object sender, EventArgs e)
-        {
-            GL.ClearColor(Color.LightSkyBlue);
-
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-            GL.Ortho(-(window.Width / window.Height), -(window.Width / window.Height), -1, 1, -1, 1);
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            GL.Scale(-1.0f, 1.0f, 1.0f);
-            GL.Rotate(180, 0.0f, 0.0f, 1.0f);
-        }*/
-
-        private void Window_RenderFrame(object sender, FrameEventArgs e)
-        {
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            Color c;
-            int dex = Triangular((int)Math.Pow(2, numSubs)) - 1;
-            int dex2 = Triangular((int)Math.Pow(2, numSubs)-1);
-            for (int i = 0; i < hexList.Length; i++)
-            {
-                if (i == count)
-                {
-                    c = Color.Red;
-                }
-                else if (hexList[i].tile==null)
-                {
-                    c = Color.Black;
-                }
-                else
-                {
-                    c = hexList[i].tile.getColor();
-                }
-                if (hexList[i].isProj())
-                {
-                    drawProj(hexList[i], c);
-                }
-            }
-            count++;
-            if (count >= hexList.Length)
-            {
-                count %= hexList.Length;
-            }
-            GL.Flush();
-            //window.SwapBuffers();
-        }
-
-
         //Calculates a triangular number
         private int Triangular(int tri)
         {
@@ -520,77 +470,6 @@ namespace ProjectCeres
             return sphere;
         }
 
-        void drawTriangle(Triangle t, Color c)
-        {
-            GL.Begin(BeginMode.Polygon);
-                GL.Color3(c);
-                GL.Vertex3(t.t0.X, t.t0.Y, t.t0.Z);
-                GL.Vertex3(t.t1.X, t.t1.Y, t.t1.Z);
-                GL.Vertex3(t.t2.X, t.t2.Y, t.t2.Z);
-            GL.End();
-        }
-
-        void drawHexagon(Hexagon h, Color c)
-        {
-            GL.Begin(BeginMode.Polygon);
-            GL.Color3(c);
-            GL.Vertex3(h.points[0].X, h.points[0].Y, h.points[0].Z);
-            GL.Vertex3(h.points[1].X, h.points[1].Y, h.points[1].Z);
-            GL.Vertex3(h.points[2].X, h.points[2].Y, h.points[2].Z);
-            GL.Vertex3(h.points[3].X, h.points[3].Y, h.points[3].Z);
-            GL.Vertex3(h.points[4].X, h.points[4].Y, h.points[4].Z);
-            GL.Vertex3(h.points[5].X, h.points[5].Y, h.points[5].Z);
-            GL.End();
-        }
-
-        void drawProj(Hexagon h, Color c)
-        {
-
-            if (!h.isEdge)
-            {
-                GL.Begin(BeginMode.Polygon);
-                GL.Color3(c);
-                GL.Vertex2(h.equiVec[0].X, h.equiVec[0].Y);
-                GL.Vertex2(h.equiVec[1].X, h.equiVec[1].Y);
-                GL.Vertex2(h.equiVec[2].X, h.equiVec[2].Y);
-                GL.Vertex2(h.equiVec[3].X, h.equiVec[3].Y);
-                GL.Vertex2(h.equiVec[4].X, h.equiVec[4].Y);
-                GL.Vertex2(h.equiVec[5].X, h.equiVec[5].Y);
-                GL.End();
-            }
-            else
-            {
-                GL.Begin(BeginMode.Polygon);
-                GL.Color3(c);
-                for (int i = 0; i < 6; i++)
-                {
-                    if (h.equiVec[i].X <= 0)
-                    {
-                        GL.Vertex2(h.equiVec[i].X + 2.0f, h.equiVec[i].Y);
-                    }
-                    else
-                    {
-                        GL.Vertex2(h.equiVec[i].X, h.equiVec[i].Y);
-                    }
-                }
-                GL.End();
-
-                GL.Begin(BeginMode.Polygon);
-                GL.Color3(c);
-                for (int i = 0; i < 6; i++)
-                {
-                    if (h.equiVec[i].X >= 0)
-                    {
-                        GL.Vertex2(h.equiVec[i].X - 2.0f, h.equiVec[i].Y);
-                    }
-                    else
-                    {
-                        GL.Vertex2(h.equiVec[i].X, h.equiVec[i].Y);
-                    }
-                }
-                GL.End();
-            }
-        }
         public void LoadGrid(GeoGrid g)
         {
             int edgeLen = (int)Math.Pow(2, numSubs);
@@ -651,6 +530,88 @@ namespace ProjectCeres
             }
         }
 
+        public void GeoToRect(RectGrid input, GeoGrid g, int ig)
+        {
+            LoadGrid(g);
+            int nearestX;
+            int nearestY;
+            for (int i = 0; i < hexList.Length; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    nearestX = (int)(((input.Width - 1) / 2) * (hexList[i].equiVec[j].X + 1));
+                    nearestY = (int)(((input.Height - 1) / 2) * (hexList[i].equiVec[j].Y + 1));
+                    input.getTile(nearestY, nearestX).Value = hexList[i].tile.Value;
+                    input.getTile(nearestY, nearestX).Rank = input.getTile(nearestY, nearestX).Rank + 1;
+                }
+            }
+            for (int row = 0; row < input.Height; row++)
+            {
+                for (int col = 0; col < input.Width; col++)
+                {
+                    input.getTile(row, col).Value = input.getTile(row, col).Value / input.getTile(row, col).Rank;
+                }
+            }
+        }
+
+        //The data loaded into the rectGrid is whatever is already loaded in
+        public void GeoToRect(RectGrid input)
+        {
+            Bitmap img = new Bitmap(input.Width, input.Height);
+            Graphics g = Graphics.FromImage(img);
+            SolidBrush b = new SolidBrush(Color.Red);
+            PointF[] curHex = new PointF[6];
+            float offX = img.Width / 2.0f;
+            float offY = img.Height / 2.0f;
+            int brightness;
+            for (int i = 0; i < hexList.Length; i++)
+            {
+                brightness = (int)(hexList[i].tile.Value * 255);
+                b.Color = Color.FromArgb(brightness, brightness, brightness);
+                if (!hexList[i].isEdge)
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        curHex[j] = new PointF(offX + hexList[i].equiVec[j].X * (img.Width / 2.0f), offY + hexList[i].equiVec[j].Y * (img.Height / 2.0f));
+                    }
+                    g.FillPolygon(b, curHex);
+                }
+                else
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        if (hexList[i].equiVec[j].X <= 0)
+                        {
+                            curHex[j] = new PointF(img.Width + offX + hexList[i].equiVec[j].X * (img.Width / 2.0f), offY + hexList[i].equiVec[j].Y * (img.Height / 2.0f));
+                        }
+                        else
+                        {
+                            curHex[j] = new PointF(offX + hexList[i].equiVec[j].X * (img.Width / 2.0f), offY + hexList[i].equiVec[j].Y * (img.Height / 2.0f));
+                        }
+                    }
+                    g.FillPolygon(b, curHex);
+                    for (int j = 0; j < 6; j++)
+                    {
+                        if (hexList[i].equiVec[j].X >= 0)
+                        {
+                            curHex[j] = new PointF(-img.Width + offX + hexList[i].equiVec[j].X * (img.Width / 2.0f), offY + hexList[i].equiVec[j].Y * (img.Height / 2.0f));
+                        }
+                        else
+                        {
+                            curHex[j] = new PointF(offX + hexList[i].equiVec[j].X * (img.Width / 2.0f), offY + hexList[i].equiVec[j].Y * (img.Height / 2.0f));
+                        }
+                    }
+                    g.FillPolygon(b, curHex);
+                }
+            }
+            for(int row = 0; row < input.Height; row++)
+            {
+                for (int col = 0; col < input.Width; col++)
+                {
+                    input.getTile(row, col).Value = (float)(img.GetPixel(col, row).R) / 255; 
+                }
+            }
+        }
         public Hexagon[] dispHex { get { return this.hexList; } }
     }
 }

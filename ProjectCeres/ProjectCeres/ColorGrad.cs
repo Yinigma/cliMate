@@ -44,6 +44,16 @@ namespace ProjectCeres
         public static readonly gradElement L4 = new gradElement(1.0f, Color.White);
         public static readonly gradElement[] LandGradient = { L0, L1, L2, L3, L4 };
 
+        public static readonly gradElement O0 = new gradElement(0, Color.DarkBlue);
+        public static readonly gradElement O1 = new gradElement(0.25f, Color.BlueViolet);
+        public static readonly gradElement O2 = new gradElement(0.5f, Color.CadetBlue);
+        public static readonly gradElement O3 = new gradElement(0.80f, Color.LightCyan);
+        public static readonly gradElement[] OceanGradient = { O0, O1, O2, O3 };
+
+        public static readonly gradElement M0 = new gradElement(0, Color.White);
+        public static readonly gradElement M1 = new gradElement(0.25f, Color.LightCyan);
+        public static readonly gradElement[] MoistureGradient = { O0, O1, O2, O3 };
+
         //Gets a color
         //Assumes a sorted array of gradElements
         //I should fix that...

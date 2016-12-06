@@ -59,6 +59,25 @@ namespace ProjectCeres
             }
             return img;
         }
+        public Bitmap gridToBitmapOcean(ColorGrad.gradElement[] landGrad, ColorGrad.gradElement[] seaGrad, float seaLevel)
+        {
+            Bitmap img = new Bitmap(width, height);
+            for (int r = 0; r < height; r++)
+            {
+                for (int c = 0; c < width; c++)
+                {
+                    if (grid[r][c].Value > seaLevel)
+                    {
+                        img.SetPixel(c, r, ColorGrad.getGradColor(landGrad, (grid[r][c].Value-seaLevel)/(1 - seaLevel)));
+                    }
+                    else
+                    {
+                        img.SetPixel(c, r, ColorGrad.getGradColor(seaGrad, grid[r][c].Value / seaLevel));
+                    }
+                }
+            }
+            return img;
+        }
 
         public void setTile(int row, int col, float val) { grid[row][col].Value = val; }
         public Tile getTile(int row, int col) { return grid[row][col]; }

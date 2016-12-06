@@ -10,23 +10,20 @@ namespace ProjectCeres
     public class Tile
     {
         private float val;
-
-        public float Value
-        {
-            get { return val; }
-            set { val = value; }
-        }
-
+        private int rank;
 
         public Tile(float val)
         {
+            rank = 0;
             this.val = val;
         }
 
         public Color getColor()
         {
-            int iVal = (int)(this.val * 255);
+            int iVal = (int)(val * 255);
             return Color.FromArgb(iVal, iVal, iVal);
         }
+        public float Value { get { return val; } set { val = value; } }
+        public int Rank {get { return rank; } set{ rank = value; } }
     }
 }

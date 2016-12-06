@@ -12,7 +12,7 @@ namespace ProjectCeres
     {
         private Tile[][][] grid;
         int frequency;
-        const int NUMPARA = 5;
+        public const int NUMPARA = 5;
 
         public GeoGrid(int subdivisions)
         {
@@ -54,7 +54,7 @@ namespace ProjectCeres
             */
             Random rando = new Random();
             grid = new Tile[NUMPARA][][];
-            this.frequency = (int) Math.Pow(2.0f,subdivisions) + 1;
+            frequency = (int) Math.Pow(2.0f,subdivisions) + 1;
             for(int i = 0; i< NUMPARA; i++)
             {
                 grid[i] = new Tile[frequency][];
@@ -158,18 +158,18 @@ namespace ProjectCeres
                 else if(col < frequency - 1)
                 {
                     //edge case: upper left edge
-                    mates[2] = grid[(par + 1) % (NUMPARA)][col][1];
-                    mates[3] = grid[(par + 1) % (NUMPARA)][col+1][1];
+                    mates[2] = grid[(par + 1) % (NUMPARA)][col-1][1];
+                    mates[3] = grid[(par + 1) % (NUMPARA)][col][1];
                 }
                 else if (col==2*frequency-2)
                 {
                     //Corner case: upper right pentagon
                     mates = new Tile[5];
-                    mates[0] = grid[par][row-1][col-1];
+                    mates[0] = grid[par][row+1][col-1];
                     mates[1] = grid[par][row][col - 1];
                     mates[2] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1)];
                     mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][col - (frequency - 1) + 1];
-                    mates[4] = grid[par][row-1][col];
+                    mates[4] = grid[par][row+1][col];
                     return mates;
                 }
                 else if(col > frequency - 1)
@@ -183,14 +183,14 @@ namespace ProjectCeres
                     //Corner case: upper middle pentagon
                     mates = new Tile[5];
                     mates[0] = grid[par][1][col - 1];
-                    mates[0] = grid[par][0][col - 1];
-                    mates[2] = grid[(par + 1) % (NUMPARA)][frequency-1][1];
-                    mates[0] = grid[par][0][col + 1];
-                    mates[0] = grid[par][1][col];
+                    mates[1] = grid[par][0][col - 1];
+                    mates[2] = grid[(par + 1) % (NUMPARA)][frequency-2][1];
+                    mates[3] = grid[par][0][col + 1];
+                    mates[4] = grid[par][1][col];
                     return mates;
                 }
             }
-            if (row == frequency - 1)
+            else if (row == frequency - 1)
             {
                 int nextPara = (par == 0) ? NUMPARA - 1 : par - 1;
                 if (col == 0)
@@ -223,8 +223,8 @@ namespace ProjectCeres
                 else if (col > frequency - 1)
                 {
                     //edge case: lower right edge
-                    mates[5] = grid[nextPara][col-(frequency-1)][2 * frequency - 3];
-                    mates[0] = grid[nextPara][col-(frequency-1)-1][2 * frequency - 3];
+                    mates[5] = grid[nextPara][col-(frequency-1)+1][2 * frequency - 3];
+                    mates[0] = grid[nextPara][col-(frequency-1)][2 * frequency - 3];
                 }
                 else
                 {
@@ -238,28 +238,28 @@ namespace ProjectCeres
                     return mates;
                 }
             }
-            if (col == 0)
+            else if (col == 0)
             {
                 //Edge case: left edge
                 int nextPara = (par == 0) ? NUMPARA - 1 : par - 1;
-                mates[0] = grid[nextPara][1][row+1];
-                mates[1] = grid[nextPara][1][row];
+                mates[0] = grid[nextPara][1][row];
+                mates[1] = grid[nextPara][1][row-1];
 
             }
-            if(col == frequency * 2 - 2)
+            else if(col == frequency * 2 - 2)
             {
                 //Edge case: Right edge
-                mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency - 2 + row];
-                mates[4] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency - 1 + row];
+                mates[3] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency - 1 + row];
+                mates[4] = grid[(par + 1) % (NUMPARA)][frequency - 2][frequency  + row];
             }
             //I bet you could do this with a for loop and mod ops
             //but fuck that, it's 2 am
-            if (mates[0] != null) { mates[0] = grid[par][row+1][col-1]; }
-            if (mates[1] != null) { mates[1] = grid[par][row][col-1]; }
-            if (mates[2] != null) { mates[2] = grid[par][row-1][col]; }
-            if (mates[3] != null) { mates[3] = grid[par][row-1][col+1]; }
-            if (mates[4] != null) { mates[4] = grid[par][row][col+1]; }
-            if (mates[5] != null) { mates[5] = grid[par][row+1][col]; }
+            if (mates[0] == null) { mates[0] = grid[par][row+1][col-1]; }
+            if (mates[1] == null) { mates[1] = grid[par][row][col-1]; }
+            if (mates[2] == null) { mates[2] = grid[par][row-1][col]; }
+            if (mates[3] == null) { mates[3] = grid[par][row-1][col+1]; }
+            if (mates[4] == null) { mates[4] = grid[par][row][col+1]; }
+            if (mates[5] == null) { mates[5] = grid[par][row+1][col]; }
             return mates;
         }
 
@@ -276,6 +276,23 @@ namespace ProjectCeres
                     }
                 }
             }
+        }
+
+        public GeoGrid deepCopy(int numsubs)
+        {
+            GeoGrid dup = new GeoGrid(numsubs);
+            for (int i = 0; i < NUMPARA; i++)
+            {
+                for (int j = 0; j < frequency-1; j++)
+                {
+                    for (int k = 0; k < 2 * frequency - 1; k++)
+                    {
+                        dup.getTile(i,j,k).Value = grid[i][j][k].Value;
+                        dup.getTile(i, j, k).Rank = grid[i][j][k].Rank;
+                    }
+                }
+            }
+            return dup;
         }
 
         public void DBfaceColors()

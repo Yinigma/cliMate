@@ -30,7 +30,7 @@ namespace ProjectCeres
             Width = 640;
             Height = 480;
             frequency = 6;
-            seaLevel = 0.55f;
+            seaLevel = 0.25f;
             equiDisp = new GridDisplayEquiRect(frequency);
             map = new NodeMap(Width, Height);
         }
