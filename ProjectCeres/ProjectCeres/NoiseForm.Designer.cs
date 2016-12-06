@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoiseForm));
             this.cancelButton = new System.Windows.Forms.Button();
-            this.generateButton = new System.Windows.Forms.Button();
             this.PersBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.OctBox = new System.Windows.Forms.TextBox();
@@ -41,34 +41,22 @@
             this.seedBox = new System.Windows.Forms.TextBox();
             this.seedGroupBox = new System.Windows.Forms.GroupBox();
             this.OKButton = new System.Windows.Forms.Button();
-            this.previewBox = new System.Windows.Forms.PictureBox();
-            this.previewGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.FrequencyGroupBox.SuspendLayout();
             this.seedGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBox)).BeginInit();
-            this.previewGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(151, 490);
+            this.cancelButton.Location = new System.Drawing.Point(161, 292);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 19;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // generateButton
-            // 
-            this.generateButton.Location = new System.Drawing.Point(101, 258);
-            this.generateButton.Name = "generateButton";
-            this.generateButton.Size = new System.Drawing.Size(75, 23);
-            this.generateButton.TabIndex = 17;
-            this.generateButton.Text = "Generate";
-            this.generateButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // PersBox
             // 
@@ -157,7 +145,7 @@
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(48, 490);
+            this.OKButton.Location = new System.Drawing.Point(25, 292);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 18;
@@ -165,38 +153,19 @@
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
-            // previewBox
-            // 
-            this.previewBox.Location = new System.Drawing.Point(54, 19);
-            this.previewBox.Name = "previewBox";
-            this.previewBox.Size = new System.Drawing.Size(148, 140);
-            this.previewBox.TabIndex = 5;
-            this.previewBox.TabStop = false;
-            // 
-            // previewGroupBox
-            // 
-            this.previewGroupBox.Controls.Add(this.previewBox);
-            this.previewGroupBox.Location = new System.Drawing.Point(14, 298);
-            this.previewGroupBox.Name = "previewGroupBox";
-            this.previewGroupBox.Size = new System.Drawing.Size(247, 169);
-            this.previewGroupBox.TabIndex = 22;
-            this.previewGroupBox.TabStop = false;
-            this.previewGroupBox.Text = "Preview";
-            // 
             // NoiseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 558);
-            this.Controls.Add(this.previewGroupBox);
+            this.ClientSize = new System.Drawing.Size(273, 341);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.generateButton);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.FrequencyGroupBox);
             this.Controls.Add(this.seedGroupBox);
             this.Controls.Add(this.OKButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NoiseForm";
             this.Text = "Noise";
             this.groupBox3.ResumeLayout(false);
@@ -209,8 +178,6 @@
             this.FrequencyGroupBox.PerformLayout();
             this.seedGroupBox.ResumeLayout(false);
             this.seedGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBox)).EndInit();
-            this.previewGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -218,7 +185,6 @@
         #endregion
 
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Button generateButton;
         private System.Windows.Forms.TextBox PersBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox OctBox;
@@ -230,7 +196,5 @@
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.GroupBox seedGroupBox;
         private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.PictureBox previewBox;
-        private System.Windows.Forms.GroupBox previewGroupBox;
     }
 }
