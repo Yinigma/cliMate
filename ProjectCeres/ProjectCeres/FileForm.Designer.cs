@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileForm));
             this.xBox = new System.Windows.Forms.TextBox();
             this.Position = new System.Windows.Forms.Label();
             this.yBox = new System.Windows.Forms.TextBox();
@@ -218,6 +219,7 @@
             this.Controls.Add(this.yBox);
             this.Controls.Add(this.Position);
             this.Controls.Add(this.xBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FileForm";
             this.Text = "Load an image";
             ((System.ComponentModel.ISupportInitialize)(this.previewBox)).EndInit();

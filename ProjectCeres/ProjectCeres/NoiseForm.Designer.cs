@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoiseForm));
             this.cancelButton = new System.Windows.Forms.Button();
             this.generateButton = new System.Windows.Forms.Button();
             this.PersBox = new System.Windows.Forms.TextBox();
@@ -197,6 +198,7 @@
             this.Controls.Add(this.FrequencyGroupBox);
             this.Controls.Add(this.seedGroupBox);
             this.Controls.Add(this.OKButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NoiseForm";
             this.Text = "Noise";
             this.groupBox3.ResumeLayout(false);
