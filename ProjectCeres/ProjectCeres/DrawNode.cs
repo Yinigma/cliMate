@@ -8,6 +8,8 @@ namespace ProjectCeres
 {
     public class DrawNode : InputNode
     {
+        public bool editedOnce = false;     //Whether or not the user has already drawn something.  This way we can edit instead of creating something new.
+
         //Expose outGrid so we can edit it in Canvas
         public RectGrid Grid
         {
@@ -33,6 +35,7 @@ namespace ProjectCeres
         {
             Canvas canvas = new Canvas(this);
             canvas.ShowDialog();
+            editedOnce = true;
         }
     }
 }

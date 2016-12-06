@@ -138,12 +138,29 @@ namespace ProjectCeres
         //Events
         private void Canvas_Load(object sender, EventArgs e)
         {
-            //Get the image dimensions
-            WidthHeightDialog dialog = new WidthHeightDialog();
-            dialog.ShowDialog();
 
-            //Create the image and picbox
-            image = new RectGrid(node.getOutputGrid().Width,node.getOutputGrid().Height);
+            if (!node.editedOnce)   //If this is the first time editing, create a new image.
+            {
+                WidthHeightDialog dialog = new WidthHeightDialog();
+                dialog.ShowDialog();
+
+                image = new RectGrid(dialog.height, dialog.width);
+            }
+            else                    //If we've already made one, copy the existing one so we can edit it.
+            {
+                image = new RectGrid(node.Grid.Height, node.Grid.Width);
+
+                for (int r = 0; r < node.Grid.Height; r++)
+                {
+                    for(int c = 0; c < node.Grid.Width; c++)
+                    {
+                        float val = node.Grid.getTile(r, c).Value;
+                        image.setTile(r, c, val);
+                    }
+                }
+            }
+
+            //Put the image in the picbox
             tempPicBox.Image = image.gridToBitmap();
 
             //Enable the timer
