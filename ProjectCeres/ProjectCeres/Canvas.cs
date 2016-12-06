@@ -19,8 +19,8 @@ namespace ProjectCeres
         private const double MIN_BRUSH_SPEED = 0;
         private const double MAX_BRUSH_SPEED = 500;
 
-        //private Grid image;
         private RectGrid image;
+
         private DrawNode node;
         private long prevTime = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
 
@@ -209,8 +209,8 @@ namespace ProjectCeres
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            //Set the image to the project's main input
-            //Form1.currentOpenProject.SetFirstHeightmap(image);
+            //Set the image to the node's output
+            node.Grid = image;
             this.Close();
         }
 

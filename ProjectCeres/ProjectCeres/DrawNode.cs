@@ -8,6 +8,13 @@ namespace ProjectCeres
 {
     public class DrawNode : InputNode
     {
+        //Expose outGrid so we can edit it in Canvas
+        public RectGrid Grid
+        {
+            get { return outGrid; }
+            set { outGrid = value; }
+        }
+
         public DrawNode(NodeMap map) : base(map)
         {
         }
