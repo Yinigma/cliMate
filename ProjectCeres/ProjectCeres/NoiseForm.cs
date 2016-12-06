@@ -66,10 +66,14 @@ namespace ProjectCeres
         {
             try { frequency = double.Parse(FreqBox.Text); }
             catch (Exception fe) {/*do nothing*/}
-            //I'm pretture sure the only constraint on frequency is that it can't be 0 or smaller
-            if(frequency <= 0.0D)
+            //I'm pretty sure the only constraint on frequency is that it can't be 0 or smaller
+            if (frequency <= 0.001D)
             {
-                frequency = 0.00000000001D;
+                frequency = 0.001D;
+            }
+            else if (frequency >= 1)
+            {
+                frequency = .99;
             }
             FreqBox.Text = "" + frequency;
         }
@@ -113,6 +117,11 @@ namespace ProjectCeres
             node.NodePerlin.Frequency = frequency;
             node.NodePerlin.Persistence = persistence;
             node.NodePerlin.Lacunarity = lacurinity;
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
