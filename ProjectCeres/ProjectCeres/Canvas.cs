@@ -19,8 +19,8 @@ namespace ProjectCeres
         private const double MIN_BRUSH_SPEED = 0;
         private const double MAX_BRUSH_SPEED = 500;
 
-        //private Grid image;
         private RectGrid image;
+
         private DrawNode node;
         private long prevTime = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
 
@@ -138,12 +138,29 @@ namespace ProjectCeres
         //Events
         private void Canvas_Load(object sender, EventArgs e)
         {
-            //Get the image dimensions
-            WidthHeightDialog dialog = new WidthHeightDialog();
-            dialog.ShowDialog();
 
-            //Create the image and picbox
-            image = new RectGrid(node.getOutputGrid().Width,node.getOutputGrid().Height);
+            if (!node.editedOnce)   //If this is the first time editing, create a new image.
+            {
+                WidthHeightDialog dialog = new WidthHeightDialog();
+                dialog.ShowDialog();
+
+                image = new RectGrid(dialog.height, dialog.width);
+            }
+            else                    //If we've already made one, copy the existing one so we can edit it.
+            {
+                image = new RectGrid(node.Grid.Height, node.Grid.Width);
+
+                for (int r = 0; r < node.Grid.Height; r++)
+                {
+                    for(int c = 0; c < node.Grid.Width; c++)
+                    {
+                        float val = node.Grid.getTile(r, c).Value;
+                        image.setTile(r, c, val);
+                    }
+                }
+            }
+
+            //Put the image in the picbox
             tempPicBox.Image = image.gridToBitmap();
 
             //Enable the timer
@@ -209,8 +226,8 @@ namespace ProjectCeres
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            //Set the image to the project's main input
-            //Form1.currentOpenProject.SetFirstHeightmap(image);
+            //Set the image to the node's output
+            node.Grid = image;
             this.Close();
         }
 
@@ -274,7 +291,7 @@ namespace ProjectCeres
                 for (y = startY; y < endY; y++)
                 {
                     //Change the height at this position
-                    float val = targetGrid.getTile(x, y).Value;
+                    float val = targetGrid.getTile(y, x).Value;
                     val += (float)(speed * deltaTime);
 
                     //Ensure the value stays within the limits
@@ -284,8 +301,8 @@ namespace ProjectCeres
                     }
 
                     //Apply the height change
-                    targetGrid.getTile(x, y).Value = val;
-                    targetBitmap.SetPixel(x, y, targetGrid.getTile(x,y).getColor());
+                    targetGrid.getTile(y, x).Value = val;
+                    targetBitmap.SetPixel(x, y, targetGrid.getTile(y,x).getColor());
                 }
             }
         }
@@ -333,7 +350,7 @@ namespace ProjectCeres
                     float scaledSpeed = (float) Utils.Lerp(speed, 0, distPercent);
 
                     //Change the height at this position
-                    float val = targetGrid.getTile(x, y).Value;
+                    float val = targetGrid.getTile(y, x).Value;
                     val += scaledSpeed * (float)deltaTime;
 
                     //Ensure the value stays within the limits
@@ -343,8 +360,8 @@ namespace ProjectCeres
                     }
 
                     //Apply the height change
-                    targetGrid.getTile(x, y).Value  = val;
-                    targetBitmap.SetPixel(x, y, targetGrid.getTile(x,y).getColor());
+                    targetGrid.getTile(y, x).Value = val;
+                    targetBitmap.SetPixel(x, y, targetGrid.getTile(y,x).getColor());
                 }
             }//End of double for loop
 
