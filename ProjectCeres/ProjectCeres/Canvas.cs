@@ -274,7 +274,7 @@ namespace ProjectCeres
                 for (y = startY; y < endY; y++)
                 {
                     //Change the height at this position
-                    float val = targetGrid.getTile(x, y).Value;
+                    float val = targetGrid.getTile(y, x).Value;
                     val += (float)(speed * deltaTime);
 
                     //Ensure the value stays within the limits
@@ -284,8 +284,8 @@ namespace ProjectCeres
                     }
 
                     //Apply the height change
-                    targetGrid.getTile(x, y).Value = val;
-                    targetBitmap.SetPixel(x, y, targetGrid.getTile(x,y).getColor());
+                    targetGrid.getTile(y, x).Value = val;
+                    targetBitmap.SetPixel(x, y, targetGrid.getTile(y,x).getColor());
                 }
             }
         }
@@ -333,7 +333,7 @@ namespace ProjectCeres
                     float scaledSpeed = (float) Utils.Lerp(speed, 0, distPercent);
 
                     //Change the height at this position
-                    float val = targetGrid.getTile(x, y).Value;
+                    float val = targetGrid.getTile(y, x).Value;
                     val += scaledSpeed * (float)deltaTime;
 
                     //Ensure the value stays within the limits
@@ -343,8 +343,8 @@ namespace ProjectCeres
                     }
 
                     //Apply the height change
-                    targetGrid.getTile(x, y).Value  = val;
-                    targetBitmap.SetPixel(x, y, targetGrid.getTile(x,y).getColor());
+                    targetGrid.getTile(y, x).Value = val;
+                    targetBitmap.SetPixel(x, y, targetGrid.getTile(y,x).getColor());
                 }
             }//End of double for loop
 
