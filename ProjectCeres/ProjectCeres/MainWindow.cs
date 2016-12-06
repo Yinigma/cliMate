@@ -113,6 +113,31 @@ namespace ProjectCeres
             testPanel.Update();
         }
 
+        private void UpdateMapDisplay()
+        {
+            //Updates the map display in the map tab
+
+            selectedNode = nodePanel.Selected;
+            if (selectedNode != null)
+            {
+                if (DisplayOptionBox.SelectedIndex == 0)
+                {
+                    mapDisplay.Image = selectedNode.getOutputGrid().gridToBitmapOcean(ColorGrad.LandGradient, ColorGrad.OceanGradient, currentProject.SeaLevel);
+                }
+                else if (DisplayOptionBox.SelectedIndex == 1)
+                {
+                    mapDisplay.Image = selectedNode.ToBitmap();
+                }
+                else if (DisplayOptionBox.SelectedIndex == 2)
+                {
+                    RectGrid moisture = Biomes.moisture(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency);
+                    mapDisplay.Image = moisture.gridToBitmap(ColorGrad.MoistureGradient);
+                }
+            }
+        }
+
+        //Events
+
         private void outputButton_Click(object sender, EventArgs e)
         {
             nodePanel.CurrentNode = NodePanel.OUTPUT;
@@ -141,25 +166,22 @@ namespace ProjectCeres
 
         private void mapDisplay_Click(object sender, EventArgs e)
         {
-            selectedNode = nodePanel.Selected;
-            if (selectedNode != null)
+            UpdateMapDisplay();
+        }
+
+        private void MainTabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //If we changed to Map, update the map display.
+            if (MainTabs.SelectedTab == imageTab)
             {
-                if (DisplayOptionBox.SelectedIndex == 0)
-                {
-                    mapDisplay.Image = selectedNode.getOutputGrid().gridToBitmapOcean(ColorGrad.LandGradient,ColorGrad.OceanGradient,currentProject.SeaLevel);
-                }
-                else if (DisplayOptionBox.SelectedIndex == 1)
-                {
-                    mapDisplay.Image = selectedNode.ToBitmap();
-                }
-                else if (DisplayOptionBox.SelectedIndex == 2)
-                {
-                    RectGrid moisture = Biomes.moisture(selectedNode.getOutputGrid(),currentProject, 3*currentProject.Frequency);
-                    mapDisplay.Image = moisture.gridToBitmap(ColorGrad.MoistureGradient);
-                }
+                UpdateMapDisplay();
             }
         }
 
-        
+        private void DisplayOptionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Update map display when we change modes
+            UpdateMapDisplay();
+        }
     }
 }
