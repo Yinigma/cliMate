@@ -134,7 +134,7 @@ namespace ProjectCeres
             UpdateGraph();
         }
 
-        private void UpdateGraph()
+        public void UpdateGraph()
         {
             Graphics nodeGraphics = this.CreateGraphics();
             nodeGraphics.Clear(Color.White);

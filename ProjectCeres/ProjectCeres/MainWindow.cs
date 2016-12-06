@@ -176,6 +176,12 @@ namespace ProjectCeres
             {
                 UpdateMapDisplay();
             }
+
+            //If we changed to Node, repaint the control
+            if (MainTabs.SelectedTab == NodeTab)
+            {
+                nodePanel.UpdateGraph();
+            }
         }
 
         private void DisplayOptionBox_SelectedIndexChanged(object sender, EventArgs e)
