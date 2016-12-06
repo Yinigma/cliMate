@@ -9,6 +9,7 @@ namespace ProjectCeres
 {
     class Biomes
     {
+        private const float MAXALTIMPACT = 0.7f;
         //cutoff determines the amount of steps before moisture reaches its lowest point
         public static RectGrid moisture(RectGrid input, Project proj, int cutoff)
         {
@@ -143,10 +144,30 @@ namespace ProjectCeres
             return landForms;
         }
 
+        public static RectGrid Temperature(RectGrid input, float equator)
+        {
+            Math.Abs(equator);
+            equator -= (int)equator;
+            int gridEquator = (int)(input.Height * equator);
+            float dist;
+            float latTemp;
+            float altTemp;
+            RectGrid temp = new RectGrid(input.Height,input.Width);
+            for(int row = 0; row < input.Height; row++)
+            {
+                for(int col = 0; col < input.Width; col++)
+                {
+                    dist = (float)(gridEquator - row)/(input.Height/2);
+                    latTemp = 1 - ((float)Math.Sqrt(Math.Abs(dist)));
+                    altTemp = MAXALTIMPACT * input.getTile(row, col).Value;
+                    temp.getTile(row, col).Value = Math.Max(0,latTemp-altTemp);
+                }
+            }
+            return temp;
+        }
         public static RectGrid Temperature(RectGrid input)
         {
-            RectGrid temp = new RectGrid(0,0);
-            return null;
+            return Temperature(input,0.5f);
         }
     }
 }

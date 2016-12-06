@@ -126,7 +126,8 @@ namespace ProjectCeres
                 }
                 else if (DisplayOptionBox.SelectedIndex == 1)
                 {
-                    mapDisplay.Image = selectedNode.ToBitmap();
+
+                    mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid()).gridToBitmap(ColorGrad.tempGradient);
                 }
                 else if (DisplayOptionBox.SelectedIndex == 2)
                 {
