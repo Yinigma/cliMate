@@ -25,6 +25,7 @@ namespace ProjectCeres
             public Rectangle[] rects;
             public int x;
             public int y;
+            public String name;
         }
 
         private Node output;

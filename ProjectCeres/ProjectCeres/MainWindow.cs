@@ -187,8 +187,35 @@ namespace ProjectCeres
 
         private void DisplayOptionBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Enable/Disable Season Swithcer
+            if (DisplayOptionBox.SelectedIndex == 0)
+            {
+                SeasonSwitcher.SelectedIndex = 0;
+                SeasonSwitcher.Enabled = false;
+            }
+            else if (DisplayOptionBox.SelectedIndex == 1)
+            {
+                SeasonSwitcher.SelectedIndex = 0;
+                SeasonSwitcher.Enabled = true;
+            }
+            else if (DisplayOptionBox.SelectedIndex == 2)
+            {
+                SeasonSwitcher.SelectedIndex = 0;
+                SeasonSwitcher.Enabled = false;
+            }
+            else if (DisplayOptionBox.SelectedIndex == 3)
+            {
+                SeasonSwitcher.SelectedIndex = 0;
+                SeasonSwitcher.Enabled = false;
+            }
+
             //Update map display when we change modes
             UpdateMapDisplay();
+        }
+
+        private void SeasonSwitcher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Season Switching Algorithm...
         }
     }
 }

@@ -141,6 +141,10 @@ namespace ProjectCeres
             foreach(NodeMap.guiNode gn in map.Nodes)
             {
                 nodeGraphics.DrawRectangles(pen, gn.rects);
+                PointF p = new PointF(gn.rects[0].Left, gn.rects[0].Top - 20);
+                Font f = new Font(new FontFamily("Arial"), 12, FontStyle.Regular, GraphicsUnit.Point);
+                SolidBrush b = new SolidBrush(Color.Black);
+                nodeGraphics.DrawString(gn.name, f, b, p);
             }
             foreach(NodeMap.Edge e in map.Connections)
             {
@@ -156,35 +160,42 @@ namespace ProjectCeres
             toAdd.x = x;
             toAdd.y = y;
             toAdd.rects = null;
+            toAdd.name = null;
             if (currentNode == OUTPUT)
             {
                 toAdd.node = new OutputNode(map);
+                toAdd.name = "output";
                 set = true;
 
             }
             else if (currentNode == FILE)
             {
                 toAdd.node = new FileNode(map, "");
+                toAdd.name = "file";
                 set = true;
             }
             else if (currentNode == DEBUG)
             {
                 toAdd.node = new DebugNode(map);
+                toAdd.name = "debug";
                 set = true;
             }
             else if (currentNode == DEBUG2)
             {
                 toAdd.node = new DebugNode2(map);
+                toAdd.name = "debug2";
                 set = true;
             }
             else if (currentNode == NOISE)
             {
                 toAdd.node = new NoiseNode(map);
+                toAdd.name = "noise";
                 set = true;
             }
             else if (currentNode == DRAW)
             {
                 toAdd.node = new DrawNode(map);
+                toAdd.name = "draw";
                 set = true;
             }
             if (set) {
@@ -218,6 +229,7 @@ namespace ProjectCeres
             colNode.x = 0;
             colNode.y = 0;
             colNode.rects = null;
+            colNode.name = null;
             if (this.map.Nodes != null)
             {
                 foreach (NodeMap.guiNode gn in map.Nodes)
