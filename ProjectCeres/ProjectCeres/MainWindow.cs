@@ -126,8 +126,18 @@ namespace ProjectCeres
                 }
                 else if (DisplayOptionBox.SelectedIndex == 1)
                 {
-
-                    mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid()).gridToBitmap(ColorGrad.tempGradient);
+                    if (SeasonSwitcher.SelectedIndex == 1)
+                    {
+                        mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid(), 0.4f).gridToBitmap(ColorGrad.tempGradient);
+                    }
+                    else if(SeasonSwitcher.SelectedIndex == 2)
+                    {
+                        mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid(), 0.6f).gridToBitmap(ColorGrad.tempGradient);
+                    }
+                    else
+                    {
+                        mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid()).gridToBitmap(ColorGrad.tempGradient);
+                    }
                 }
                 else if (DisplayOptionBox.SelectedIndex == 2)
                 {
@@ -215,7 +225,7 @@ namespace ProjectCeres
 
         private void SeasonSwitcher_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Season Switching Algorithm...
+            UpdateMapDisplay();
         }
     }
 }

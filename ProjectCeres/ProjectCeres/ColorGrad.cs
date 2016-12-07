@@ -87,7 +87,7 @@ namespace ProjectCeres
             gradElement g0 = grad[index - 1];
             gradElement g1 = grad[index];
             //Leave it to Alexavier
-            return Utils.LerpColor(g0.GradColor,g1.GradColor, (double)((pos-g0.Position)/(g1.Position-g0.Position)));
+            return Utils.LerpColor(g0.GradColor,g1.GradColor, ((pos-g0.Position)/(g1.Position-g0.Position)));
         }
     }
 }

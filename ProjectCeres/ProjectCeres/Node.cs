@@ -74,7 +74,7 @@ namespace ProjectCeres
 
         public virtual String toString()
         {
-            return this.toString(0);
+            return toString(0);
         }
 
         public virtual String toString(int steps)
@@ -155,7 +155,7 @@ namespace ProjectCeres
 
         public Node Mask { get { return mask; } set { mask = value; } }
 
-        public Node Parent { get { return this.parent; } set { this.parent = value; } }
+        public Node Parent { get { return parent; } set { parent = value; } }
 
         public RectGrid getOutputGrid() { return outGrid; }
     }
