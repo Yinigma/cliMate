@@ -9,6 +9,15 @@ namespace ProjectCeres
 {
     class Biomes
     {
+        public static int tundra = 1;
+        public static int grassland = 2;
+        public static int woodland = 3;
+        public static int borealForest = 4;
+        public static int seasonalForest = 5;
+        public static int temperateRainforest = 6;
+        public static int tropicalRainforest = 7;
+        public static int savanna = 8;
+        public static int desert = 9;
         private const float MAXALTIMPACT = 0.7f;
         //cutoff determines the amount of steps before moisture reaches its lowest point
         public static RectGrid moisture(RectGrid input, Project proj, int cutoff)
