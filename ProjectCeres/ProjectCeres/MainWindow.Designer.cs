@@ -44,7 +44,6 @@ namespace ProjectCeres
             this.DisplayOptionBox = new System.Windows.Forms.ComboBox();
             this.testTab = new System.Windows.Forms.TabPage();
             this.testPanel = new System.Windows.Forms.Panel();
-            this.nodePanel = new ProjectCeres.NodePanel();
             this.fileImportButton = new System.Windows.Forms.ToolStripButton();
             this.perlinNoiseButton = new System.Windows.Forms.ToolStripButton();
             this.plateSimButton = new System.Windows.Forms.ToolStripButton();
@@ -61,6 +60,7 @@ namespace ProjectCeres
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nodePanel = new ProjectCeres.NodePanel();
             this.MainTabs.SuspendLayout();
             this.NodeTab.SuspendLayout();
             this.NodeToolStrip.SuspendLayout();
@@ -212,15 +212,6 @@ namespace ProjectCeres
             this.testPanel.Size = new System.Drawing.Size(819, 377);
             this.testPanel.TabIndex = 0;
             // 
-            // nodePanel
-            // 
-            this.nodePanel.CurrentNode = 0;
-            this.nodePanel.Location = new System.Drawing.Point(30, 0);
-            this.nodePanel.Map = null;
-            this.nodePanel.Name = "nodePanel";
-            this.nodePanel.Size = new System.Drawing.Size(808, 387);
-            this.nodePanel.TabIndex = 1;
-            // 
             // fileImportButton
             // 
             this.fileImportButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -367,6 +358,15 @@ namespace ProjectCeres
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "Save...";
             // 
+            // nodePanel
+            // 
+            this.nodePanel.CurrentNode = 0;
+            this.nodePanel.Location = new System.Drawing.Point(30, 0);
+            this.nodePanel.Map = null;
+            this.nodePanel.Name = "nodePanel";
+            this.nodePanel.Size = new System.Drawing.Size(808, 387);
+            this.nodePanel.TabIndex = 1;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,7 +377,7 @@ namespace ProjectCeres
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
-            this.Text = "Project Ceres";
+            this.Text = "CliMate";
             this.MainTabs.ResumeLayout(false);
             this.NodeTab.ResumeLayout(false);
             this.NodeTab.PerformLayout();
