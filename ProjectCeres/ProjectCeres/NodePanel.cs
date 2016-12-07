@@ -225,6 +225,7 @@ namespace ProjectCeres
             colNode.x = 0;
             colNode.y = 0;
             colNode.rects = null;
+            colNode.name = null;
             if (this.map.Nodes != null)
             {
                 foreach (NodeMap.guiNode gn in map.Nodes)
