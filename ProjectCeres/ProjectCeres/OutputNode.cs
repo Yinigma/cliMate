@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     class OutputNode : Node
     {
         const int SRS = 16;

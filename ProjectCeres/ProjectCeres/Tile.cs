@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class Tile
     {
         private float val;

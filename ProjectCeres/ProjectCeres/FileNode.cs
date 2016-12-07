@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class FileNode : InputNode
     {
         int xPos;

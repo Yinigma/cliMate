@@ -10,6 +10,7 @@ using System.Drawing;
 
 namespace ProjectCeres
 {
+    [Serializable]
     class GeoDisplayIco
     {
         //These just get division out of the way so the program isn't doing it every time it draws a shape 

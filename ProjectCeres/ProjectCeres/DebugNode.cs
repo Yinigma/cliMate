@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     class DebugNode : InputNode
     {
         public DebugNode(NodeMap map) : base(map) {}

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public abstract class InputNode : Node
     {
         //Parent class for generation things

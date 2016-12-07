@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class DrawNode : InputNode
     {
         public bool editedOnce = false;     //Whether or not the user has already drawn something.  This way we can edit instead of creating something new.
