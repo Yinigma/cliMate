@@ -11,6 +11,7 @@ using System.Drawing;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class GridDisplayEquiRect
     {
 
@@ -19,7 +20,7 @@ namespace ProjectCeres
         Color[] colors;
         int numSubs;
         int count = 0;
-
+        
         private class Triangle
         {
 

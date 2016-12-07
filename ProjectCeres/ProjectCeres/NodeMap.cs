@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class NodeMap
     {
         public struct Edge

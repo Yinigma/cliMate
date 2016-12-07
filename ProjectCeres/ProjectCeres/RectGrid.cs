@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class RectGrid
     {
         public const float MAX = 1.0f;

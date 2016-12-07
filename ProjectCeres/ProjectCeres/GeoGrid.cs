@@ -8,6 +8,7 @@ using System.Drawing;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class GeoGrid
     {
         private Tile[][][] grid;
