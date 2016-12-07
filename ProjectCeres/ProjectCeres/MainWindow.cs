@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.IO;
 
 namespace ProjectCeres
 {
@@ -235,7 +236,24 @@ namespace ProjectCeres
             saveProjectDialog.ShowDialog();
 
             //Save the project
-            SoapFormatter formatter;           
+            FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+            SoapFormatter formatter = new SoapFormatter();
+            formatter.Serialize(saveStream, currentProject);
+
+            saveStream.Close();
+        }
+
+        private void projectToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Get the file name to open from
+            openProjectDialog.ShowDialog();
+
+            //Open the project
+            FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
+            SoapFormatter formatter = new SoapFormatter();
+            currentProject = (Project)formatter.Deserialize(openStream);
+
+            openStream.Close();
         }
     }
 }

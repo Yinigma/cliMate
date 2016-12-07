@@ -63,6 +63,8 @@ namespace ProjectCeres
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectDialog = new System.Windows.Forms.SaveFileDialog();
+            this.projectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProjectDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainTabs.SuspendLayout();
             this.NodeTab.SuspendLayout();
             this.NodeToolStrip.SuspendLayout();
@@ -371,6 +373,8 @@ namespace ProjectCeres
             // 
             // loadToolStripMenuItem
             // 
+            this.loadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectToolStripMenuItem1});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.loadToolStripMenuItem.Text = "Load...";
@@ -389,6 +393,17 @@ namespace ProjectCeres
             this.saveProjectAsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.saveProjectAsToolStripMenuItem.Text = "Save project as";
             this.saveProjectAsToolStripMenuItem.Click += new System.EventHandler(this.saveProjectAsToolStripMenuItem_Click);
+            // 
+            // projectToolStripMenuItem1
+            // 
+            this.projectToolStripMenuItem1.Name = "projectToolStripMenuItem1";
+            this.projectToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.projectToolStripMenuItem1.Text = "Project";
+            this.projectToolStripMenuItem1.Click += new System.EventHandler(this.projectToolStripMenuItem1_Click);
+            // 
+            // openProjectDialog
+            // 
+            this.openProjectDialog.FileName = "openFileDialog1";
             // 
             // MainWindow
             // 
@@ -452,6 +467,8 @@ namespace ProjectCeres
         private System.Windows.Forms.ComboBox SeasonSwitcher;
         private System.Windows.Forms.ToolStripMenuItem saveProjectAsToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveProjectDialog;
+        private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem1;
+        private System.Windows.Forms.OpenFileDialog openProjectDialog;
     }
 }
 
