@@ -156,35 +156,42 @@ namespace ProjectCeres
             toAdd.x = x;
             toAdd.y = y;
             toAdd.rects = null;
+            toAdd.name = null;
             if (currentNode == OUTPUT)
             {
                 toAdd.node = new OutputNode(map);
+                toAdd.name = "output";
                 set = true;
 
             }
             else if (currentNode == FILE)
             {
                 toAdd.node = new FileNode(map, "");
+                toAdd.name = "file";
                 set = true;
             }
             else if (currentNode == DEBUG)
             {
                 toAdd.node = new DebugNode(map);
+                toAdd.name = "debug";
                 set = true;
             }
             else if (currentNode == DEBUG2)
             {
                 toAdd.node = new DebugNode2(map);
+                toAdd.name = "debug2";
                 set = true;
             }
             else if (currentNode == NOISE)
             {
                 toAdd.node = new NoiseNode(map);
+                toAdd.name = "noise";
                 set = true;
             }
             else if (currentNode == DRAW)
             {
                 toAdd.node = new DrawNode(map);
+                toAdd.name = "draw";
                 set = true;
             }
             if (set) {
