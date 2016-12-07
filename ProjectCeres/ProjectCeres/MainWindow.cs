@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace ProjectCeres
 {
@@ -226,6 +227,15 @@ namespace ProjectCeres
         private void SeasonSwitcher_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateMapDisplay();
+        }
+
+        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Get the file name to save as.
+            saveProjectDialog.ShowDialog();
+
+            //Save the project
+            SoapFormatter formatter;           
         }
     }
 }

@@ -61,6 +61,8 @@ namespace ProjectCeres
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectDialog = new System.Windows.Forms.SaveFileDialog();
             this.MainTabs.SuspendLayout();
             this.NodeTab.SuspendLayout();
             this.NodeToolStrip.SuspendLayout();
@@ -75,10 +77,11 @@ namespace ProjectCeres
             this.MainTabs.Controls.Add(this.NodeTab);
             this.MainTabs.Controls.Add(this.imageTab);
             this.MainTabs.Controls.Add(this.testTab);
-            this.MainTabs.Location = new System.Drawing.Point(0, 27);
+            this.MainTabs.Location = new System.Drawing.Point(0, 33);
+            this.MainTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MainTabs.Name = "MainTabs";
             this.MainTabs.SelectedIndex = 0;
-            this.MainTabs.Size = new System.Drawing.Size(846, 413);
+            this.MainTabs.Size = new System.Drawing.Size(1128, 508);
             this.MainTabs.TabIndex = 0;
             this.MainTabs.SelectedIndexChanged += new System.EventHandler(this.MainTabs_SelectedIndexChanged);
             // 
@@ -86,10 +89,11 @@ namespace ProjectCeres
             // 
             this.NodeTab.Controls.Add(this.nodePanel);
             this.NodeTab.Controls.Add(this.NodeToolStrip);
-            this.NodeTab.Location = new System.Drawing.Point(4, 22);
+            this.NodeTab.Location = new System.Drawing.Point(4, 25);
+            this.NodeTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NodeTab.Name = "NodeTab";
-            this.NodeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.NodeTab.Size = new System.Drawing.Size(838, 387);
+            this.NodeTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NodeTab.Size = new System.Drawing.Size(1120, 479);
             this.NodeTab.TabIndex = 0;
             this.NodeTab.Text = "Nodes";
             this.NodeTab.UseVisualStyleBackColor = true;
@@ -97,10 +101,11 @@ namespace ProjectCeres
             // nodePanel
             // 
             this.nodePanel.CurrentNode = 0;
-            this.nodePanel.Location = new System.Drawing.Point(30, 0);
+            this.nodePanel.Location = new System.Drawing.Point(40, 0);
             this.nodePanel.Map = null;
+            this.nodePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nodePanel.Name = "nodePanel";
-            this.nodePanel.Size = new System.Drawing.Size(808, 387);
+            this.nodePanel.Size = new System.Drawing.Size(1077, 476);
             this.nodePanel.TabIndex = 1;
             // 
             // NodeToolStrip
@@ -121,10 +126,10 @@ namespace ProjectCeres
             this.toolStripSeparator3,
             this.debugButton,
             this.debugInputButton});
-            this.NodeToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.NodeToolStrip.Location = new System.Drawing.Point(4, 4);
             this.NodeToolStrip.Name = "NodeToolStrip";
             this.NodeToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.NodeToolStrip.Size = new System.Drawing.Size(25, 381);
+            this.NodeToolStrip.Size = new System.Drawing.Size(25, 471);
             this.NodeToolStrip.TabIndex = 0;
             this.NodeToolStrip.Text = "toolStrip1";
             // 
@@ -246,10 +251,11 @@ namespace ProjectCeres
             this.imageTab.Controls.Add(this.DispLabel);
             this.imageTab.Controls.Add(this.DisplayOptionBox);
             this.imageTab.Controls.Add(this.mapDisplay);
-            this.imageTab.Location = new System.Drawing.Point(4, 22);
+            this.imageTab.Location = new System.Drawing.Point(4, 25);
+            this.imageTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imageTab.Name = "imageTab";
-            this.imageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.imageTab.Size = new System.Drawing.Size(838, 387);
+            this.imageTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageTab.Size = new System.Drawing.Size(1120, 479);
             this.imageTab.TabIndex = 1;
             this.imageTab.Text = "Map";
             this.imageTab.UseVisualStyleBackColor = true;
@@ -257,9 +263,10 @@ namespace ProjectCeres
             // seasonLabel
             // 
             this.seasonLabel.AutoSize = true;
-            this.seasonLabel.Location = new System.Drawing.Point(11, 200);
+            this.seasonLabel.Location = new System.Drawing.Point(15, 246);
+            this.seasonLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.seasonLabel.Name = "seasonLabel";
-            this.seasonLabel.Size = new System.Drawing.Size(43, 13);
+            this.seasonLabel.Size = new System.Drawing.Size(56, 17);
             this.seasonLabel.TabIndex = 4;
             this.seasonLabel.Text = "Season";
             // 
@@ -270,18 +277,20 @@ namespace ProjectCeres
             "Normal",
             "Summer",
             "Winter"});
-            this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
+            this.SeasonSwitcher.Location = new System.Drawing.Point(11, 270);
+            this.SeasonSwitcher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SeasonSwitcher.Name = "SeasonSwitcher";
-            this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
+            this.SeasonSwitcher.Size = new System.Drawing.Size(177, 24);
             this.SeasonSwitcher.TabIndex = 3;
             this.SeasonSwitcher.SelectedIndexChanged += new System.EventHandler(this.SeasonSwitcher_SelectedIndexChanged);
             // 
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-            this.DispLabel.Location = new System.Drawing.Point(8, 141);
+            this.DispLabel.Location = new System.Drawing.Point(11, 174);
+            this.DispLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DispLabel.Name = "DispLabel";
-            this.DispLabel.Size = new System.Drawing.Size(41, 13);
+            this.DispLabel.Size = new System.Drawing.Size(54, 17);
             this.DispLabel.TabIndex = 2;
             this.DispLabel.Text = "Display";
             // 
@@ -294,18 +303,20 @@ namespace ProjectCeres
             "Temperature",
             "Moisture",
             "Biomes"});
-            this.DisplayOptionBox.Location = new System.Drawing.Point(8, 157);
+            this.DisplayOptionBox.Location = new System.Drawing.Point(11, 193);
+            this.DisplayOptionBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DisplayOptionBox.Name = "DisplayOptionBox";
-            this.DisplayOptionBox.Size = new System.Drawing.Size(134, 21);
+            this.DisplayOptionBox.Size = new System.Drawing.Size(177, 24);
             this.DisplayOptionBox.TabIndex = 1;
             this.DisplayOptionBox.SelectedIndexChanged += new System.EventHandler(this.DisplayOptionBox_SelectedIndexChanged);
             // 
             // mapDisplay
             // 
             this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
-            this.mapDisplay.Location = new System.Drawing.Point(205, 0);
+            this.mapDisplay.Location = new System.Drawing.Point(273, 0);
+            this.mapDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mapDisplay.Name = "mapDisplay";
-            this.mapDisplay.Size = new System.Drawing.Size(633, 387);
+            this.mapDisplay.Size = new System.Drawing.Size(844, 476);
             this.mapDisplay.TabIndex = 0;
             this.mapDisplay.TabStop = false;
             this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
@@ -313,18 +324,20 @@ namespace ProjectCeres
             // testTab
             // 
             this.testTab.Controls.Add(this.testPanel);
-            this.testTab.Location = new System.Drawing.Point(4, 22);
+            this.testTab.Location = new System.Drawing.Point(4, 25);
+            this.testTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.testTab.Name = "testTab";
-            this.testTab.Size = new System.Drawing.Size(838, 387);
+            this.testTab.Size = new System.Drawing.Size(1120, 479);
             this.testTab.TabIndex = 2;
             this.testTab.Text = "Test";
             this.testTab.UseVisualStyleBackColor = true;
             // 
             // testPanel
             // 
-            this.testPanel.Location = new System.Drawing.Point(9, 3);
+            this.testPanel.Location = new System.Drawing.Point(12, 4);
+            this.testPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.testPanel.Name = "testPanel";
-            this.testPanel.Size = new System.Drawing.Size(819, 377);
+            this.testPanel.Size = new System.Drawing.Size(1092, 464);
             this.testPanel.TabIndex = 0;
             // 
             // menuStrip1
@@ -335,7 +348,8 @@ namespace ProjectCeres
             this.projectToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(844, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1125, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "mainMenuStrip";
             // 
@@ -346,36 +360,46 @@ namespace ProjectCeres
             this.loadToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.projectToolStripMenuItem.Text = "Project";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.newToolStripMenuItem.Text = "New..";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.loadToolStripMenuItem.Text = "Load...";
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveProjectAsToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.saveToolStripMenuItem.Text = "Save...";
+            // 
+            // saveProjectAsToolStripMenuItem
+            // 
+            this.saveProjectAsToolStripMenuItem.Name = "saveProjectAsToolStripMenuItem";
+            this.saveProjectAsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.saveProjectAsToolStripMenuItem.Text = "Save project as";
+            this.saveProjectAsToolStripMenuItem.Click += new System.EventHandler(this.saveProjectAsToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 441);
+            this.ClientSize = new System.Drawing.Size(1125, 543);
             this.Controls.Add(this.MainTabs);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainWindow";
             this.Text = "CliMate";
             this.MainTabs.ResumeLayout(false);
@@ -426,6 +450,8 @@ namespace ProjectCeres
         private System.Windows.Forms.Panel testPanel;
         private System.Windows.Forms.Label seasonLabel;
         private System.Windows.Forms.ComboBox SeasonSwitcher;
+        private System.Windows.Forms.ToolStripMenuItem saveProjectAsToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveProjectDialog;
     }
 }
 
