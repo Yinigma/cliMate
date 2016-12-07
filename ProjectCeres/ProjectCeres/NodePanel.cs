@@ -141,6 +141,10 @@ namespace ProjectCeres
             foreach(NodeMap.guiNode gn in map.Nodes)
             {
                 nodeGraphics.DrawRectangles(pen, gn.rects);
+                PointF p = new PointF(gn.rects[0].Left, gn.rects[0].Top - 20);
+                Font f = new Font(new FontFamily("Arial"), 12, FontStyle.Regular, GraphicsUnit.Point);
+                SolidBrush b = new SolidBrush(Color.Black);
+                nodeGraphics.DrawString(gn.name, f, b, p);
             }
             foreach(NodeMap.Edge e in map.Connections)
             {
