@@ -133,36 +133,36 @@ namespace ProjectCeres
             this.fileImportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileImportButton.Name = "fileImportButton";
             this.fileImportButton.Size = new System.Drawing.Size(22, 24);
-            this.fileImportButton.Text = "FileButton";
+            this.fileImportButton.Text = "File Import";
             this.fileImportButton.Click += new System.EventHandler(this.fileImportButton_Click);
             // 
             // perlinNoiseButton
             // 
             this.perlinNoiseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin;
+            this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin2;
             this.perlinNoiseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.perlinNoiseButton.Name = "perlinNoiseButton";
             this.perlinNoiseButton.Size = new System.Drawing.Size(22, 24);
-            this.perlinNoiseButton.Text = "noiseButton";
+            this.perlinNoiseButton.Text = "Noise Node";
             this.perlinNoiseButton.Click += new System.EventHandler(this.perlinNoiseButton_Click);
             // 
             // plateSimButton
             // 
             this.plateSimButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics;
+            this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics2;
             this.plateSimButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.plateSimButton.Name = "plateSimButton";
             this.plateSimButton.Size = new System.Drawing.Size(22, 24);
-            this.plateSimButton.Text = "tectonicButton";
+            this.plateSimButton.Text = "Tectonic Node";
             // 
             // DrawMapButton
             // 
             this.DrawMapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DrawMapButton.Image = ((System.Drawing.Image)(resources.GetObject("DrawMapButton.Image")));
+            this.DrawMapButton.Image = global::ProjectCeres.Properties.Resources.drawing;
             this.DrawMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawMapButton.Name = "DrawMapButton";
             this.DrawMapButton.Size = new System.Drawing.Size(22, 24);
-            this.DrawMapButton.Text = "drawButton";
+            this.DrawMapButton.Text = "Drawing Node";
             this.DrawMapButton.Click += new System.EventHandler(this.DrawMapButton_Click);
             // 
             // toolStripSeparator1
@@ -205,11 +205,11 @@ namespace ProjectCeres
             // outputButton
             // 
             this.outputButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.outputButton.Image = ((System.Drawing.Image)(resources.GetObject("outputButton.Image")));
+            this.outputButton.Image = global::ProjectCeres.Properties.Resources.output;
             this.outputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.outputButton.Name = "outputButton";
             this.outputButton.Size = new System.Drawing.Size(22, 24);
-            this.outputButton.Text = "toolStripButton1";
+            this.outputButton.Text = "Output Node";
             this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
             // 
             // toolStripSeparator3
@@ -224,7 +224,7 @@ namespace ProjectCeres
             this.debugButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugButton.Name = "debugButton";
             this.debugButton.Size = new System.Drawing.Size(22, 24);
-            this.debugButton.Text = "DebugNoise";
+            this.debugButton.Text = "Debug";
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
             // debugInputButton
