@@ -86,7 +86,7 @@ namespace ProjectCeres
             this.NodeTab.Controls.Add(this.NodeToolStrip);
             this.NodeTab.Location = new System.Drawing.Point(4, 22);
             this.NodeTab.Name = "NodeTab";
-            this.NodeTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.NodeTab.Padding = new System.Windows.Forms.Padding(3);
             this.NodeTab.Size = new System.Drawing.Size(838, 387);
             this.NodeTab.TabIndex = 0;
             this.NodeTab.Text = "Nodes";
@@ -244,7 +244,7 @@ namespace ProjectCeres
             this.imageTab.Controls.Add(this.mapDisplay);
             this.imageTab.Location = new System.Drawing.Point(4, 22);
             this.imageTab.Name = "imageTab";
-            this.imageTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.imageTab.Padding = new System.Windows.Forms.Padding(3);
             this.imageTab.Size = new System.Drawing.Size(838, 387);
             this.imageTab.TabIndex = 1;
             this.imageTab.Text = "Map";
