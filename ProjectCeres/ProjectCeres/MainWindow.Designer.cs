@@ -49,6 +49,8 @@ namespace ProjectCeres
             this.debugButton = new System.Windows.Forms.ToolStripButton();
             this.debugInputButton = new System.Windows.Forms.ToolStripButton();
             this.imageTab = new System.Windows.Forms.TabPage();
+            this.seasonLabel = new System.Windows.Forms.Label();
+            this.SeasonSwitcher = new System.Windows.Forms.ComboBox();
             this.DispLabel = new System.Windows.Forms.Label();
             this.DisplayOptionBox = new System.Windows.Forms.ComboBox();
             this.mapDisplay = new System.Windows.Forms.PictureBox();
@@ -239,6 +241,8 @@ namespace ProjectCeres
             // 
             // imageTab
             // 
+            this.imageTab.Controls.Add(this.seasonLabel);
+            this.imageTab.Controls.Add(this.SeasonSwitcher);
             this.imageTab.Controls.Add(this.DispLabel);
             this.imageTab.Controls.Add(this.DisplayOptionBox);
             this.imageTab.Controls.Add(this.mapDisplay);
@@ -249,6 +253,28 @@ namespace ProjectCeres
             this.imageTab.TabIndex = 1;
             this.imageTab.Text = "Map";
             this.imageTab.UseVisualStyleBackColor = true;
+            // 
+            // seasonLabel
+            // 
+            this.seasonLabel.AutoSize = true;
+            this.seasonLabel.Location = new System.Drawing.Point(11, 200);
+            this.seasonLabel.Name = "seasonLabel";
+            this.seasonLabel.Size = new System.Drawing.Size(43, 13);
+            this.seasonLabel.TabIndex = 4;
+            this.seasonLabel.Text = "Season";
+            // 
+            // SeasonSwitcher
+            // 
+            this.SeasonSwitcher.FormattingEnabled = true;
+            this.SeasonSwitcher.Items.AddRange(new object[] {
+            "Normal",
+            "Summer",
+            "Winter"});
+            this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
+            this.SeasonSwitcher.Name = "SeasonSwitcher";
+            this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
+            this.SeasonSwitcher.TabIndex = 3;
+            this.SeasonSwitcher.SelectedIndexChanged += new System.EventHandler(this.SeasonSwitcher_SelectedIndexChanged);
             // 
             // DispLabel
             // 
@@ -397,6 +423,8 @@ namespace ProjectCeres
         private System.Windows.Forms.ToolStripButton debugButton;
         private System.Windows.Forms.ToolStripButton debugInputButton;
         private System.Windows.Forms.Panel testPanel;
+        private System.Windows.Forms.Label seasonLabel;
+        private System.Windows.Forms.ComboBox SeasonSwitcher;
     }
 }
 
