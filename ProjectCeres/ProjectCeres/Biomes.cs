@@ -28,7 +28,7 @@ namespace ProjectCeres
                                                              { TUNDRA, TUNDRA, BOREALFOREST, WOODLAND, SAVANNAH, SAVANNAH},
                                                              { TUNDRA, TUNDRA, BOREALFOREST, SEASONALFOREST, TROPICALFOREST, TROPICALFOREST},
                                                              { TUNDRA, TUNDRA, BOREALFOREST, TEMPERATEFOREST, TROPICALFOREST, TROPICALFOREST} };
-        private static readonly Color[] colors =  {Color.White, Color.LawnGreen, Color.Peru, Color.DarkMagenta, Color.Tomato, Color.DarkGreen, Color.Teal, Color.Coral, Color.Beige, Color.SteelBlue };
+        private static readonly Color[] colors =  {Color.White, Color.LawnGreen, Color.Peru, Color.DarkMagenta, Color.Tomato, Color.DarkGreen, Color.Teal, Color.Coral, Color.Tan, Color.SteelBlue };
 
 
     //cutoff determines the amount of steps before moisture reaches its lowest point
@@ -192,10 +192,10 @@ namespace ProjectCeres
             return Temperature(input, 0.5f);
         }
 
-        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff, int[] newRank)
+        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff, float equator,int[] newRank)
         {
             RectGrid moistureGrid = Biomes.moisture(input, proj, cutoff);
-            RectGrid tempGrid = Biomes.Temperature(input);
+            RectGrid tempGrid = Biomes.Temperature(input, equator);
             RectGrid biomeGrid = new RectGrid(input.Height, input.Width);
 
             int[,] converted = new int[6, 6];

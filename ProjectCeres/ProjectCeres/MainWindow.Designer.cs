@@ -83,6 +83,7 @@ namespace ProjectCeres
             this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectDialog = new System.Windows.Forms.SaveFileDialog();
             this.openProjectDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveCurrentImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTabs.SuspendLayout();
             this.NodeTab.SuspendLayout();
             this.NodeToolStrip.SuspendLayout();
@@ -661,7 +662,8 @@ namespace ProjectCeres
             this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.loadToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.saveCurrentImageToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.projectToolStripMenuItem.Text = "Project";
@@ -669,7 +671,7 @@ namespace ProjectCeres
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.newToolStripMenuItem.Text = "New..";
             // 
             // loadToolStripMenuItem
@@ -677,7 +679,7 @@ namespace ProjectCeres
             this.loadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem1});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.loadToolStripMenuItem.Text = "Load...";
             // 
             // projectToolStripMenuItem1
@@ -692,7 +694,7 @@ namespace ProjectCeres
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveProjectAsToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.saveToolStripMenuItem.Text = "Save...";
             // 
             // saveProjectAsToolStripMenuItem
@@ -705,6 +707,13 @@ namespace ProjectCeres
             // openProjectDialog
             // 
             this.openProjectDialog.FileName = "openFileDialog1";
+            // 
+            // saveCurrentImageToolStripMenuItem
+            // 
+            this.saveCurrentImageToolStripMenuItem.Name = "saveCurrentImageToolStripMenuItem";
+            this.saveCurrentImageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.saveCurrentImageToolStripMenuItem.Text = "Save Current Image";
+            this.saveCurrentImageToolStripMenuItem.Click += new System.EventHandler(this.saveCurrentImageToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -788,5 +797,6 @@ namespace ProjectCeres
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem1;
         private System.Windows.Forms.OpenFileDialog openProjectDialog;
         private System.Windows.Forms.ToolStripButton combinerButton;
+        private System.Windows.Forms.ToolStripMenuItem saveCurrentImageToolStripMenuItem;
     }
 }

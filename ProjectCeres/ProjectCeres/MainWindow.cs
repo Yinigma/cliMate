@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace ProjectCeres
 {
@@ -180,8 +181,23 @@ namespace ProjectCeres
                     replacements[6] = tropBox.SelectedIndex;
                     replacements[7] = savBox.SelectedIndex;
                     replacements[8] = desertBox.SelectedIndex;
-                    RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                    mapDisplay.Image = Biomes.renderBiomes(biome);
+                    if (SeasonSwitcher.SelectedIndex == 1)
+                    {
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, .4f, replacements);
+                        mapDisplay.Image = Biomes.renderBiomes(biome);
+                    }
+                    else if (SeasonSwitcher.SelectedIndex == 2)
+                    {
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, .6f, replacements);
+                        mapDisplay.Image = Biomes.renderBiomes(biome);
+                    }
+                    else
+                    {
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, .5f ,replacements);
+                        mapDisplay.Image = Biomes.renderBiomes(biome);
+                    }
+                    
+                    
                 }
             }
         }
@@ -370,6 +386,29 @@ namespace ProjectCeres
             catch (FileNotFoundException)
             {
 
+            }
+        }
+
+        private void saveCurrentImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //insert saving.
+            //Taken from stackoverflow http://stackoverflow.com/questions/11055258/how-to-use-savefiledialog-for-saving-images-in-c
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(sfd.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                mapDisplay.Image.Save(sfd.FileName, format);
             }
         }
     }
