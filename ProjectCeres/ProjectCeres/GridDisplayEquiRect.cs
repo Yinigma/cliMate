@@ -21,6 +21,7 @@ namespace ProjectCeres
         int numSubs;
         int count = 0;
         
+        [Serializable]
         private class Triangle
         {
 
@@ -57,6 +58,7 @@ namespace ProjectCeres
 
         };
 
+        [Serializable]
         public class Hexagon
         {
 

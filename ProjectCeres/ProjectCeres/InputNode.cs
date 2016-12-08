@@ -29,7 +29,11 @@ namespace ProjectCeres
         }
         public override string toString(int steps)
         {
-            return this.toString();
+            return toString();
+        }
+        public override void updateInputs()
+        {
+            return;
         }
     }
 }

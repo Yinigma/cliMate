@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace ProjectCeres
 {
@@ -23,11 +25,7 @@ namespace ProjectCeres
             
             InitializeComponent();
             testPanel.Click += TestPanel_Click;
-            //DisplayOptionBox.
-            currentProject = new Project();
-            nodePanel.Map = currentProject.getMap();
-            nodePanel.CurrentNode = NodePanel.NONE;
-            selectedNode = null;
+            SetProject(new Project());
             mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
             DisplayOptionBox.SelectedIndex = 0;
             counterDB = 0;
@@ -111,6 +109,21 @@ namespace ProjectCeres
             }
             counterDB++;
             testPanel.Update();
+        }
+
+        private void SetProject(Project project)
+        {
+            //Sets the current project to the given one
+            currentProject = project;
+            nodePanel.Map = currentProject.getMap();
+            nodePanel.CurrentNode = NodePanel.NONE;
+            selectedNode = null;
+            nodePanel.Selected = null;
+            mapDisplay.Image = null;
+
+            //Also update map display and node panel
+            nodePanel.UpdateGraph();
+            UpdateMapDisplay();
         }
 
         private void UpdateMapDisplay()
@@ -230,7 +243,7 @@ namespace ProjectCeres
 
         private void DeleteAll_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 selectedNode = null;
                 currentProject.ClearMap();
@@ -241,7 +254,43 @@ namespace ProjectCeres
             mapDisplay.Image = null;
             UpdateMapDisplay();
             testPanel.Update();
-            nodePanel.UpdateGraph();
+            nodePanel.UpdateGraph();*/
+            this.SetProject(new Project());
+        }
+
+        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Get the file name to save as.
+            saveProjectDialog.ShowDialog();
+
+            //Save the project
+            /*FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+            XmlSerializer serialize = new XmlSerializer(typeof(Project));
+            serialize.Serialize(saveStream, currentProject);
+            saveStream.Close();*/
+
+            FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(saveStream, currentProject);
+
+            saveStream.Close();
+        }
+
+        private void projectToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Get the file name to open from
+            openProjectDialog.ShowDialog();
+
+            //Open the project
+            FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            Project openedProject = (Project)formatter.Deserialize(openStream);
+            SetProject(openedProject);
+
+            openStream.Close();
+            MessageBox.Show("" + currentProject.Frequency);
         }
     }
 }

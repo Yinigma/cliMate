@@ -11,6 +11,7 @@ namespace ProjectCeres
     [Serializable]
     public class NodeMap
     {
+        [Serializable]
         public struct Edge
         {
             public guiNode n1;
@@ -20,6 +21,7 @@ namespace ProjectCeres
             public int dex;
         }
 
+        [Serializable]
         public struct guiNode
         {
             public Node node;
