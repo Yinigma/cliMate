@@ -268,13 +268,17 @@ namespace ProjectCeres
             XmlSerializer serialize = new XmlSerializer(typeof(Project));
             serialize.Serialize(saveStream, currentProject);
             saveStream.Close();*/
+            try
+            {
+                FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(saveStream, currentProject);
+                saveStream.Close();
+            }
+            catch (ArgumentException)
+            {
 
-            FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(saveStream, currentProject);
-
-            saveStream.Close();
+            }
         }
 
         private void projectToolStripMenuItem1_Click(object sender, EventArgs e)
