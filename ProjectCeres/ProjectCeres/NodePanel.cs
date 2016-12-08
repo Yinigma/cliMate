@@ -140,6 +140,11 @@ namespace ProjectCeres
             nodeGraphics.Clear(Color.White);
             foreach(NodeMap.guiNode gn in map.Nodes)
             {
+                pen = new Pen(Color.Black);
+                if (selectedNode.Equals(gn))
+                {
+                    pen = new Pen(Color.Red);
+                }
                 nodeGraphics.DrawRectangles(pen, gn.rects);
                 PointF p = new PointF(gn.rects[0].Left, gn.rects[0].Top - 20);
                 Font f = new Font(new FontFamily("Arial"), 12, FontStyle.Regular, GraphicsUnit.Point);
