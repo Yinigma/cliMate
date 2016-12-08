@@ -180,7 +180,7 @@ namespace ProjectCeres
             return Temperature(input, 0.5f);
         }
 
-        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff)
+        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff, int[,] newRank)
         {
             RectGrid moistureGrid = Biomes.moisture(input, proj, cutoff);
             RectGrid tempGrid = Biomes.Temperature(input);
@@ -267,6 +267,31 @@ namespace ProjectCeres
                             biomeGrid.getTile(row, col).Rank = 7;
 
                     }
+                }
+            }
+
+            for (int row = 0; row < biomeGrid.Height; row++)
+            {
+                for (int col = 0; col < biomeGrid.Width; col++)
+                {
+                    if (biomeGrid.getTile(row, col).Rank == 1)
+                        biomeGrid.getTile(row, col).Rank = newRank[0,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 2)
+                        biomeGrid.getTile(row, col).Rank = newRank[1,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 3)
+                        biomeGrid.getTile(row, col).Rank = newRank[2,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 4)
+                        biomeGrid.getTile(row, col).Rank = newRank[3,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 5)
+                        biomeGrid.getTile(row, col).Rank = newRank[4,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 6)
+                        biomeGrid.getTile(row, col).Rank = newRank[5,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 7)
+                        biomeGrid.getTile(row, col).Rank = newRank[6,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 8)
+                        biomeGrid.getTile(row, col).Rank = newRank[7,1];
+                    else if (biomeGrid.getTile(row, col).Rank == 9)
+                        biomeGrid.getTile(row, col).Rank = newRank[8,1];
                 }
             }
 

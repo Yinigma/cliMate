@@ -14,6 +14,7 @@ namespace ProjectCeres
 {
     public partial class MainWindow : Form
     {
+        int[,] replacements = new int[9, 2] { {1,1}, {2,2}, {3,3}, {4,4}, {5,5}, {6,6}, {7,7}, {8,8}, {9,9} };
         int counterDB;
         Project currentProject;
         NodeMap map;
@@ -118,6 +119,8 @@ namespace ProjectCeres
             nodePanel.Map = currentProject.getMap();
             nodePanel.CurrentNode = NodePanel.NONE;
             selectedNode = null;
+            nodePanel.Selected = null;
+            mapDisplay.Image = null;
 
             //Also update map display and node panel
             nodePanel.UpdateGraph();
@@ -141,7 +144,7 @@ namespace ProjectCeres
                     {
                         mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid(), 0.4f).gridToBitmap(ColorGrad.tempGradient);
                     }
-                    else if(SeasonSwitcher.SelectedIndex == 2)
+                    else if (SeasonSwitcher.SelectedIndex == 2)
                     {
                         mapDisplay.Image = Biomes.Temperature(selectedNode.getOutputGrid(), 0.6f).gridToBitmap(ColorGrad.tempGradient);
                     }
@@ -154,6 +157,68 @@ namespace ProjectCeres
                 {
                     RectGrid moisture = Biomes.moisture(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency);
                     mapDisplay.Image = moisture.gridToBitmap(ColorGrad.MoistureGradient);
+                }
+                else if (DisplayOptionBox.SelectedIndex == 3)
+                {
+                    if (tundraBox.SelectedIndex != 0)
+                    {
+                        replacements[0, 1] = tundraBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (grassBox.SelectedIndex != 1)
+                    {
+                        replacements[1, 1] = grassBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (woodBox.SelectedIndex != 2)
+                    {
+                        replacements[2, 1] = woodBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (borBox.SelectedIndex != 3)
+                    {
+                        replacements[3, 1] = borBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (seasonBox.SelectedIndex != 4)
+                    {
+                        replacements[4, 1] = seasonBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (temperBox.SelectedIndex != 5)
+                    {
+                        replacements[5, 1] = temperBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (tropBox.SelectedIndex != 6)
+                    {
+                        replacements[6, 1] = tropBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (savBox.SelectedIndex != 7)
+                    {
+                        replacements[7, 1] = savBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else if (desertBox.SelectedIndex != 8)
+                    {
+                        replacements[8, 1] = desertBox.SelectedIndex + 1;
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        // mapDisplay.Image = biome.gridToBitmap(); 
+                    }
+                    else
+                    {
+                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                        //mapDisplay.Image = biome.gridToBitmap(); 
+                    }
                 }
             }
         }
@@ -221,21 +286,57 @@ namespace ProjectCeres
             {
                 SeasonSwitcher.SelectedIndex = 0;
                 SeasonSwitcher.Enabled = false;
+                tundraBox.Enabled = false;
+                grassBox.Enabled = false;
+                woodBox.Enabled = false;
+                borBox.Enabled = false;
+                seasonBox.Enabled = false;
+                temperBox.Enabled = false;
+                tropBox.Enabled = false;
+                savBox.Enabled = false;
+                desertBox.Enabled = false;
             }
             else if (DisplayOptionBox.SelectedIndex == 1)
             {
                 SeasonSwitcher.SelectedIndex = 0;
                 SeasonSwitcher.Enabled = true;
+                tundraBox.Enabled = false;
+                grassBox.Enabled = false;
+                woodBox.Enabled = false;
+                borBox.Enabled = false;
+                seasonBox.Enabled = false;
+                temperBox.Enabled = false;
+                tropBox.Enabled = false;
+                savBox.Enabled = false;
+                desertBox.Enabled = false;
             }
             else if (DisplayOptionBox.SelectedIndex == 2)
             {
                 SeasonSwitcher.SelectedIndex = 0;
                 SeasonSwitcher.Enabled = false;
+                tundraBox.Enabled = false;
+                grassBox.Enabled = false;
+                woodBox.Enabled = false;
+                borBox.Enabled = false;
+                seasonBox.Enabled = false;
+                temperBox.Enabled = false;
+                tropBox.Enabled = false;
+                savBox.Enabled = false;
+                desertBox.Enabled = false;
             }
             else if (DisplayOptionBox.SelectedIndex == 3)
             {
                 SeasonSwitcher.SelectedIndex = 0;
                 SeasonSwitcher.Enabled = false;
+                tundraBox.Enabled = true;
+                grassBox.Enabled = true;
+                woodBox.Enabled = true;
+                borBox.Enabled = true;
+                seasonBox.Enabled = true;
+                temperBox.Enabled = true;
+                tropBox.Enabled = true;
+                savBox.Enabled = true;
+                desertBox.Enabled = true;
             }
 
             //Update map display when we change modes
@@ -245,6 +346,23 @@ namespace ProjectCeres
         private void SeasonSwitcher_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateMapDisplay();
+        }
+
+        private void DeleteAll_Click(object sender, EventArgs e)
+        {
+            /*try
+            {
+                selectedNode = null;
+                currentProject.ClearMap();
+            } catch (System.NullReferenceException)
+            {
+                MessageBox.Show("lol");
+            }
+            mapDisplay.Image = null;
+            UpdateMapDisplay();
+            testPanel.Update();
+            nodePanel.UpdateGraph();*/
+            this.SetProject(new Project());
         }
 
         private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -257,13 +375,17 @@ namespace ProjectCeres
             XmlSerializer serialize = new XmlSerializer(typeof(Project));
             serialize.Serialize(saveStream, currentProject);
             saveStream.Close();*/
+            try
+            {
+                FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(saveStream, currentProject);
+                saveStream.Close();
+            }
+            catch (ArgumentException)
+            {
 
-            FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(saveStream, currentProject);
-
-            saveStream.Close();
+            }
         }
 
         private void projectToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -272,14 +394,20 @@ namespace ProjectCeres
             openProjectDialog.ShowDialog();
 
             //Open the project
-            FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
-            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream openStream;
+            try
+            {
+                openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
+                BinaryFormatter formatter = new BinaryFormatter();
+                Project openedProject = (Project)formatter.Deserialize(openStream);
+                SetProject(openedProject);
+                openStream.Close();
+                MessageBox.Show("" + currentProject.Frequency);
+            }
+            catch (FileNotFoundException)
+            {
 
-            Project openedProject = (Project)formatter.Deserialize(openStream);
-            SetProject(openedProject);
-
-            openStream.Close();
-            MessageBox.Show("" + currentProject.Frequency);
+            }
         }
 
 

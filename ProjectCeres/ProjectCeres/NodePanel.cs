@@ -30,7 +30,7 @@ namespace ProjectCeres
 
         private NodeMap.Edge nextEdge;
         private NodeMap.guiNode selectedNode;
-        public Node Selected { get { return selectedNode.node; } }
+        public Node Selected { get { return selectedNode.node; } set { selectedNode.node = value; } }
         private bool destSet;
         private bool sourceSet;
         private NodeMap map;

@@ -48,12 +48,31 @@ namespace ProjectCeres
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.debugButton = new System.Windows.Forms.ToolStripButton();
             this.debugInputButton = new System.Windows.Forms.ToolStripButton();
+            this.DeleteAll = new System.Windows.Forms.ToolStripButton();
             this.imageTab = new System.Windows.Forms.TabPage();
+            this.desertBox = new System.Windows.Forms.ComboBox();
+            this.savBox = new System.Windows.Forms.ComboBox();
+            this.tropBox = new System.Windows.Forms.ComboBox();
+            this.temperBox = new System.Windows.Forms.ComboBox();
+            this.seasonBox = new System.Windows.Forms.ComboBox();
+            this.borBox = new System.Windows.Forms.ComboBox();
+            this.woodBox = new System.Windows.Forms.ComboBox();
+            this.grassBox = new System.Windows.Forms.ComboBox();
+            this.tundraBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mapDisplay = new System.Windows.Forms.PictureBox();
             this.seasonLabel = new System.Windows.Forms.Label();
             this.SeasonSwitcher = new System.Windows.Forms.ComboBox();
             this.DispLabel = new System.Windows.Forms.Label();
             this.DisplayOptionBox = new System.Windows.Forms.ComboBox();
-            this.mapDisplay = new System.Windows.Forms.PictureBox();
             this.testTab = new System.Windows.Forms.TabPage();
             this.testPanel = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -124,11 +143,12 @@ namespace ProjectCeres
             this.outputButton,
             this.toolStripSeparator3,
             this.debugButton,
-            this.debugInputButton});
+            this.debugInputButton,
+            this.DeleteAll});
             this.NodeToolStrip.Location = new System.Drawing.Point(3, 3);
             this.NodeToolStrip.Name = "NodeToolStrip";
             this.NodeToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.NodeToolStrip.Size = new System.Drawing.Size(32, 381);
+            this.NodeToolStrip.Size = new System.Drawing.Size(25, 381);
             this.NodeToolStrip.TabIndex = 0;
             this.NodeToolStrip.Text = "toolStrip1";
             // 
@@ -245,8 +265,36 @@ namespace ProjectCeres
             this.debugInputButton.Text = "debugInput";
             this.debugInputButton.Click += new System.EventHandler(this.debugInputButton_Click);
             // 
+            // DeleteAll
+            // 
+            this.DeleteAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteAll.Image = global::ProjectCeres.Properties.Resources.DeleteAll;
+            this.DeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteAll.Name = "DeleteAll";
+            this.DeleteAll.Size = new System.Drawing.Size(22, 24);
+            this.DeleteAll.Text = "Delete All";
+            this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
+            // 
             // imageTab
             // 
+            this.imageTab.Controls.Add(this.desertBox);
+            this.imageTab.Controls.Add(this.savBox);
+            this.imageTab.Controls.Add(this.tropBox);
+            this.imageTab.Controls.Add(this.temperBox);
+            this.imageTab.Controls.Add(this.seasonBox);
+            this.imageTab.Controls.Add(this.borBox);
+            this.imageTab.Controls.Add(this.woodBox);
+            this.imageTab.Controls.Add(this.grassBox);
+            this.imageTab.Controls.Add(this.tundraBox);
+            this.imageTab.Controls.Add(this.label9);
+            this.imageTab.Controls.Add(this.label8);
+            this.imageTab.Controls.Add(this.label7);
+            this.imageTab.Controls.Add(this.label6);
+            this.imageTab.Controls.Add(this.label5);
+            this.imageTab.Controls.Add(this.label4);
+            this.imageTab.Controls.Add(this.label3);
+            this.imageTab.Controls.Add(this.label2);
+            this.imageTab.Controls.Add(this.label1);
             this.imageTab.Controls.Add(this.seasonLabel);
             this.imageTab.Controls.Add(this.SeasonSwitcher);
             this.imageTab.Controls.Add(this.DispLabel);
@@ -260,23 +308,314 @@ namespace ProjectCeres
             this.imageTab.Text = "Map";
             this.imageTab.UseVisualStyleBackColor = true;
             // 
+            // desertBox
+            // 
+            this.desertBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.desertBox.FormattingEnabled = true;
+            this.desertBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.desertBox.Location = new System.Drawing.Point(132, 351);
+            this.desertBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.desertBox.Name = "desertBox";
+            this.desertBox.Size = new System.Drawing.Size(92, 21);
+            this.desertBox.TabIndex = 32;
+            // 
+            // savBox
+            // 
+            this.savBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.savBox.FormattingEnabled = true;
+            this.savBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.savBox.Location = new System.Drawing.Point(132, 327);
+            this.savBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.savBox.Name = "savBox";
+            this.savBox.Size = new System.Drawing.Size(92, 21);
+            this.savBox.TabIndex = 31;
+            // 
+            // tropBox
+            // 
+            this.tropBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tropBox.FormattingEnabled = true;
+            this.tropBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.tropBox.Location = new System.Drawing.Point(132, 302);
+            this.tropBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tropBox.Name = "tropBox";
+            this.tropBox.Size = new System.Drawing.Size(92, 21);
+            this.tropBox.TabIndex = 30;
+            // 
+            // temperBox
+            // 
+            this.temperBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.temperBox.FormattingEnabled = true;
+            this.temperBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.temperBox.Location = new System.Drawing.Point(132, 277);
+            this.temperBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.temperBox.Name = "temperBox";
+            this.temperBox.Size = new System.Drawing.Size(92, 21);
+            this.temperBox.TabIndex = 29;
+            // 
+            // seasonBox
+            // 
+            this.seasonBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.seasonBox.FormattingEnabled = true;
+            this.seasonBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.seasonBox.Location = new System.Drawing.Point(132, 252);
+            this.seasonBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.seasonBox.Name = "seasonBox";
+            this.seasonBox.Size = new System.Drawing.Size(92, 21);
+            this.seasonBox.TabIndex = 28;
+            // 
+            // borBox
+            // 
+            this.borBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.borBox.FormattingEnabled = true;
+            this.borBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.borBox.Location = new System.Drawing.Point(132, 227);
+            this.borBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.borBox.Name = "borBox";
+            this.borBox.Size = new System.Drawing.Size(92, 21);
+            this.borBox.TabIndex = 27;
+            // 
+            // woodBox
+            // 
+            this.woodBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.woodBox.FormattingEnabled = true;
+            this.woodBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.woodBox.Location = new System.Drawing.Point(132, 202);
+            this.woodBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.woodBox.Name = "woodBox";
+            this.woodBox.Size = new System.Drawing.Size(92, 21);
+            this.woodBox.TabIndex = 26;
+            // 
+            // grassBox
+            // 
+            this.grassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.grassBox.FormattingEnabled = true;
+            this.grassBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.grassBox.Location = new System.Drawing.Point(132, 178);
+            this.grassBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grassBox.Name = "grassBox";
+            this.grassBox.Size = new System.Drawing.Size(92, 21);
+            this.grassBox.TabIndex = 25;
+            // 
+            // tundraBox
+            // 
+            this.tundraBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tundraBox.FormattingEnabled = true;
+            this.tundraBox.Items.AddRange(new object[] {
+            "Tundra",
+            "Grassland",
+            "Woodland",
+            "Boreal ",
+            "Seasonal",
+            "Temperate",
+            "Tropical",
+            "Savanna",
+            "Desert"});
+            this.tundraBox.Location = new System.Drawing.Point(132, 153);
+            this.tundraBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tundraBox.Name = "tundraBox";
+            this.tundraBox.Size = new System.Drawing.Size(92, 21);
+            this.tundraBox.TabIndex = 24;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 351);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Replace Desert With";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 330);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Replace Savanna With";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 305);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Replace Tropical With";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(2, 280);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Replace Temperate With";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 255);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Replace Seasonal With";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 230);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Replace Boreal With";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 205);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Replace Woodland With";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 181);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Replace Grassland With";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 156);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Replace Tundra With";
+            // 
+            // mapDisplay
+            // 
+            this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
+            this.mapDisplay.Location = new System.Drawing.Point(245, -3);
+            this.mapDisplay.Name = "mapDisplay";
+            this.mapDisplay.Size = new System.Drawing.Size(597, 387);
+            this.mapDisplay.TabIndex = 0;
+            this.mapDisplay.TabStop = false;
+            this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
+            // 
             // seasonLabel
             // 
             this.seasonLabel.AutoSize = true;
+<<<<<<< HEAD
             this.seasonLabel.Location = new System.Drawing.Point(11, 200);
             this.seasonLabel.Name = "seasonLabel";
             this.seasonLabel.Size = new System.Drawing.Size(43, 13);
+=======
+            this.seasonLabel.Location = new System.Drawing.Point(37, 80);
+            this.seasonLabel.Name = "seasonLabel";
+            this.seasonLabel.Size = new System.Drawing.Size(152, 13);
+>>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.seasonLabel.TabIndex = 4;
-            this.seasonLabel.Text = "Season";
+            this.seasonLabel.Text = "Season (Northern Hemisphere)";
             // 
             // SeasonSwitcher
             // 
+            this.SeasonSwitcher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SeasonSwitcher.FormattingEnabled = true;
             this.SeasonSwitcher.Items.AddRange(new object[] {
             "Normal",
             "Summer",
             "Winter"});
+<<<<<<< HEAD
             this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
+=======
+            this.SeasonSwitcher.Location = new System.Drawing.Point(44, 96);
+>>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.SeasonSwitcher.Name = "SeasonSwitcher";
             this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
             this.SeasonSwitcher.TabIndex = 3;
@@ -285,7 +624,11 @@ namespace ProjectCeres
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
+<<<<<<< HEAD
             this.DispLabel.Location = new System.Drawing.Point(8, 141);
+=======
+            this.DispLabel.Location = new System.Drawing.Point(44, 18);
+>>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.DispLabel.Name = "DispLabel";
             this.DispLabel.Size = new System.Drawing.Size(41, 13);
             this.DispLabel.TabIndex = 2;
@@ -293,6 +636,7 @@ namespace ProjectCeres
             // 
             // DisplayOptionBox
             // 
+            this.DisplayOptionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DisplayOptionBox.FormattingEnabled = true;
             this.DisplayOptionBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.DisplayOptionBox.Items.AddRange(new object[] {
@@ -300,12 +644,17 @@ namespace ProjectCeres
             "Temperature",
             "Moisture",
             "Biomes"});
+<<<<<<< HEAD
             this.DisplayOptionBox.Location = new System.Drawing.Point(8, 157);
+=======
+            this.DisplayOptionBox.Location = new System.Drawing.Point(44, 34);
+>>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.DisplayOptionBox.Name = "DisplayOptionBox";
             this.DisplayOptionBox.Size = new System.Drawing.Size(134, 21);
             this.DisplayOptionBox.TabIndex = 1;
             this.DisplayOptionBox.SelectedIndexChanged += new System.EventHandler(this.DisplayOptionBox_SelectedIndexChanged);
             // 
+<<<<<<< HEAD
             // mapDisplay
             // 
             this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
@@ -316,6 +665,8 @@ namespace ProjectCeres
             this.mapDisplay.TabStop = false;
             this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
             // 
+=======
+>>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             // testTab
             // 
             this.testTab.Controls.Add(this.testPanel);
@@ -454,10 +805,28 @@ namespace ProjectCeres
         private System.Windows.Forms.Panel testPanel;
         private System.Windows.Forms.Label seasonLabel;
         private System.Windows.Forms.ComboBox SeasonSwitcher;
+        private System.Windows.Forms.ComboBox desertBox;
+        private System.Windows.Forms.ComboBox savBox;
+        private System.Windows.Forms.ComboBox tropBox;
+        private System.Windows.Forms.ComboBox temperBox;
+        private System.Windows.Forms.ComboBox seasonBox;
+        private System.Windows.Forms.ComboBox borBox;
+        private System.Windows.Forms.ComboBox woodBox;
+        private System.Windows.Forms.ComboBox grassBox;
+        private System.Windows.Forms.ComboBox tundraBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripButton DeleteAll;
         private System.Windows.Forms.ToolStripMenuItem saveProjectAsToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveProjectDialog;
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem1;
         private System.Windows.Forms.OpenFileDialog openProjectDialog;
     }
 }
-
