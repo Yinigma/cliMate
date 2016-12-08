@@ -185,6 +185,14 @@ namespace ProjectCeres
         {
             nodePanel.CurrentNode = NodePanel.DRAW;
         }
+        private void combinerButton_Click(object sender, EventArgs e)
+        {
+            nodePanel.CurrentNode = NodePanel.COMBINER;
+        }
+        private void clampButton_Click(object sender, EventArgs e)
+        {
+            nodePanel.CurrentNode = NodePanel.CLAMP;
+        }
 
         private void mapDisplay_Click(object sender, EventArgs e)
         {
@@ -273,5 +281,7 @@ namespace ProjectCeres
             openStream.Close();
             MessageBox.Show("" + currentProject.Frequency);
         }
+
+
     }
 }

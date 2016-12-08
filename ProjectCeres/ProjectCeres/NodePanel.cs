@@ -22,6 +22,8 @@ namespace ProjectCeres
         public const int DEBUG2 = 4;
         public const int NOISE = 5;
         public const int DRAW = 6;
+        public const int COMBINER = 7;
+        public const int CLAMP = 8;
 
         private int currentNode;
         public int CurrentNode { get { return currentNode; } set { currentNode = value; } }
@@ -169,38 +171,50 @@ namespace ProjectCeres
             if (currentNode == OUTPUT)
             {
                 toAdd.node = new OutputNode(map);
-                toAdd.name = "output";
+                toAdd.name = "Output";
                 set = true;
 
             }
             else if (currentNode == FILE)
             {
                 toAdd.node = new FileNode(map, "");
-                toAdd.name = "file";
+                toAdd.name = "File";
                 set = true;
             }
             else if (currentNode == DEBUG)
             {
                 toAdd.node = new DebugNode(map);
-                toAdd.name = "debug";
+                toAdd.name = "Debug input";
                 set = true;
             }
             else if (currentNode == DEBUG2)
             {
                 toAdd.node = new DebugNode2(map);
-                toAdd.name = "debug2";
+                toAdd.name = "Debug IO";
                 set = true;
             }
             else if (currentNode == NOISE)
             {
                 toAdd.node = new NoiseNode(map);
-                toAdd.name = "noise";
+                toAdd.name = "Perlin Noise";
                 set = true;
             }
             else if (currentNode == DRAW)
             {
                 toAdd.node = new DrawNode(map);
-                toAdd.name = "draw";
+                toAdd.name = "Paint";
+                set = true;
+            }
+            else if (currentNode == COMBINER)
+            {
+                toAdd.node = new CombinerNode(map);
+                toAdd.name = "Combiner";
+                set = true;
+            }
+            else if (currentNode == CLAMP)
+            {
+                toAdd.node = new ClampNode(map);
+                toAdd.name = "Clamp";
                 set = true;
             }
             if (set) {
