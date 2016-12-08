@@ -25,6 +25,10 @@ namespace ProjectCeres
 
         public override void doOperation()
         {
+            if (!isValid())
+            {
+                return;
+            }
             for(int r = 0; r<outGrid.Height; r++)
             {
                 for(int c = 0; c<outGrid.Width; c++)
@@ -77,7 +81,12 @@ namespace ProjectCeres
 
         public override void openForm()
         {
-            return;
+            CombinerForm form = new CombinerForm(this);
+            form.ShowDialog();
+            if (form.Valid)
+            {
+                doOperation();
+            }
         }
 
         public int Mode { get { return currentMode; } set { currentMode = value; } }
