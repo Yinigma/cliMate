@@ -23,30 +23,36 @@ namespace ProjectCeres
         private FileNode node;
         private int projectWidth;
         private int projectHeight;
+        bool isLoaded;
         bool isValid;
 
         public FileForm(FileNode fn)
         {
             InitializeComponent();
-            lockBox.Checked = true;
             xBox.LostFocus += XBox_LostFocus;
             yBox.LostFocus += YBox_LostFocus;
             xScaleBox.LostFocus += XScaleBox_LostFocus;
             yScaleBox.LostFocus += YScaleBox_LostFocus;
-            xPos = 0;
-            yPos = 0;
-            xScale = 1.0f;
-            yScale = 1.0f;
+            xPos = fn.XPos;
+            yPos = fn.YPos;
+            xScale = fn.XScale;
+            yScale = fn.YScale;
             node = fn;
-            currentImage = null;
-            /*xBox.ReadOnly = true;
-            yBox.ReadOnly = true;
-            xScaleBox.ReadOnly = true;
-            yScaleBox.ReadOnly = true;*/
-            okButton.Enabled = false;
+            currentImage = fn.image;
+            okButton.Enabled = (currentImage!=null);
             projectWidth = node.getOutputGrid().Width;
             projectHeight = node.getOutputGrid().Height;
+            isLoaded = (currentImage != null);
             isValid = false;
+            updateText();
+        }
+
+        private void updateText()
+        {
+            yScaleBox.Text = "" + yScale;
+            xScaleBox.Text = "" + xScale;
+            xBox.Text = "" + xPos;
+            yBox.Text = "" + yPos;
         }
 
         private void YScaleBox_LostFocus(object sender, EventArgs e)
@@ -91,6 +97,7 @@ namespace ProjectCeres
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            isValid = true;
             Close();
         }
 
@@ -105,8 +112,9 @@ namespace ProjectCeres
                 xScale = (float)projectWidth / currentImage.Width;
                 yScale = (float)projectHeight / currentImage.Height;
                 okButton.Enabled = true;
-                isValid = true;
+                isLoaded = true;
                 loadPreview();
+                updateText();
             }
             /*xBox.ReadOnly = false;
             yBox.ReadOnly = false;
@@ -131,7 +139,7 @@ namespace ProjectCeres
                 previewBox.Update();
             }
         }
-        public bool Valid { get { return isValid; } }
+        public bool Valid { get { return isLoaded&&isValid; } }
         public float XScale { get { return xScale; } }
         public float YScale { get { return yScale; } }
         public int XPosition { get { return xPos; } }
@@ -140,8 +148,15 @@ namespace ProjectCeres
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            isValid = false;
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            xScale = (float)projectWidth / currentImage.Width;
+            yScale = (float)projectHeight / currentImage.Height;
+            updateText();
+            loadPreview();
         }
     }
 }

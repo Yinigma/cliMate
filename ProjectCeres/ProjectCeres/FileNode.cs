@@ -22,8 +22,8 @@ namespace ProjectCeres
             image = null;
             xPos = 0;
             yPos = 0;
-            xScale = 0;
-            yScale = 0;
+            xScale = 1;
+            yScale = 1;
         }
 
         
@@ -85,5 +85,10 @@ namespace ProjectCeres
                 doOperation();
             }
         }
+
+        public int XPos { get { return xPos; } }
+        public int YPos { get { return yPos; } }
+        public float XScale { get { return xScale; } }
+        public float YScale { get { return yScale; } }
     }
 }

@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lockBox = new System.Windows.Forms.CheckBox();
             this.loadButton = new System.Windows.Forms.Button();
             this.previewLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
@@ -117,16 +116,6 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "X";
             // 
-            // lockBox
-            // 
-            this.lockBox.AutoSize = true;
-            this.lockBox.Location = new System.Drawing.Point(15, 248);
-            this.lockBox.Name = "lockBox";
-            this.lockBox.Size = new System.Drawing.Size(78, 17);
-            this.lockBox.TabIndex = 11;
-            this.lockBox.Text = "Lock scale";
-            this.lockBox.UseVisualStyleBackColor = true;
-            // 
             // loadButton
             // 
             this.loadButton.Location = new System.Drawing.Point(61, 33);
@@ -188,6 +177,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Fit to map";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // previewBox
             // 
@@ -209,7 +199,6 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.previewLabel);
             this.Controls.Add(this.loadButton);
-            this.Controls.Add(this.lockBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -239,7 +228,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox lockBox;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Label previewLabel;
         private System.Windows.Forms.Button okButton;

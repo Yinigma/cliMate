@@ -9,14 +9,16 @@ namespace ProjectCeres
 {
     public class ClampNode : Node
     {
-        private int max;
-        private int min;
+        private float max;
+        private float min;
         private bool cutoff;
 
         public ClampNode(NodeMap map) : base(map)
         {
-            max = -1;
-            min = -1;    
+            max = 1;
+            min = 0;
+            cutoff = true;
+            doOperation();
         }
 
         public override void doOperation()
@@ -25,10 +27,6 @@ namespace ProjectCeres
             {
                 return;
             }
-            MessageBox.Show("Bread");
-            updateInputs();
-            outGrid = children[0].getOutputGrid();
-            return;
             float current;
             if (cutoff == true)
             {
@@ -71,11 +69,11 @@ namespace ProjectCeres
         {
             ClampForm clampy = new ClampForm(this);
             clampy.ShowDialog();
-            doOperation();
+            updateInputs();
         }
 
-        public int Maximum { set { max = value; } }
-        public int Minimum { set { min = value; } }
-        public bool Cutoff { set { cutoff = value; } }
+        public float Maximum { set { max = value; } get { return max; } }
+        public float Minimum { set { min = value; } get { return min; } }
+        public bool Cutoff { set { cutoff = value; } get { return cutoff; } }
     }
 }

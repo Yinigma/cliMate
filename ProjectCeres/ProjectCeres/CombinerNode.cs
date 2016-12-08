@@ -29,14 +29,13 @@ namespace ProjectCeres
             {
                 return;
             }
-            updateInputs();
             for(int r = 0; r<outGrid.Height; r++)
             {
                 for(int c = 0; c<outGrid.Width; c++)
                 {
                     float v0 = children[0].getOutputGrid().getTile(r, c).Value;
                     float v1 = children[1].getOutputGrid().getTile(r, c).Value;
-                    outGrid.getTile(r,c).Value = subOp(0,v0,v1);
+                    outGrid.getTile(r,c).Value = subOp(currentMode,v0,v1);
                 }
             }
         }
@@ -86,6 +85,7 @@ namespace ProjectCeres
             form.ShowDialog();
             if (form.Valid)
             {
+                updateInputs();
                 doOperation();
             }
         }

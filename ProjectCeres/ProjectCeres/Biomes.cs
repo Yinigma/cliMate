@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,29 @@ namespace ProjectCeres
 {
     class Biomes
     {
-        public static int tundra = 1;
-        public static int grassland = 2;
-        public static int woodland = 3;
-        public static int borealForest = 4;
-        public static int seasonalForest = 5;
-        public static int temperateRainforest = 6;
-        public static int tropicalRainforest = 7;
-        public static int savanna = 8;
-        public static int desert = 9;
+        public const int SEA = 9;
+        public const int TUNDRA = 0;
+        public const int GRASSLAND = 1;
+        public const int WOODLAND = 2;
+        public const int BOREALFOREST = 3;
+        public const int SEASONALFOREST = 4;
+        public const int TEMPERATEFOREST = 5;
+        public const int TROPICALFOREST = 6;
+        public const int SAVANNAH = 7;
+        public const int DESERT = 8;
         private const float MAXALTIMPACT = 0.7f;
-        //cutoff determines the amount of steps before moisture reaches its lowest point
-        public static RectGrid moisture(RectGrid input, Project proj, int cutoff)
+
+        private static readonly int[,] biomeTable = new int[6, 6]{ { TUNDRA, TUNDRA, GRASSLAND, DESERT, DESERT, DESERT },
+                                                             { TUNDRA, TUNDRA, GRASSLAND, DESERT, DESERT, DESERT},
+                                                             { TUNDRA, TUNDRA, WOODLAND, WOODLAND, SAVANNAH, SAVANNAH},
+                                                             { TUNDRA, TUNDRA, BOREALFOREST, WOODLAND, SAVANNAH, SAVANNAH},
+                                                             { TUNDRA, TUNDRA, BOREALFOREST, SEASONALFOREST, TROPICALFOREST, TROPICALFOREST},
+                                                             { TUNDRA, TUNDRA, BOREALFOREST, TEMPERATEFOREST, TROPICALFOREST, TROPICALFOREST} };
+        private static readonly Color[] colors =  {Color.White, Color.LawnGreen, Color.Peru, Color.DarkMagenta, Color.Tomato, Color.DarkGreen, Color.Teal, Color.Coral, Color.Beige, Color.SteelBlue };
+
+
+    //cutoff determines the amount of steps before moisture reaches its lowest point
+    public static RectGrid moisture(RectGrid input, Project proj, int cutoff)
         {
 
             GeoGrid geo = new GeoGrid(proj.Frequency);
@@ -167,7 +179,7 @@ namespace ProjectCeres
                 for (int col = 0; col < input.Width; col++)
                 {
                     dist = (float)(gridEquator - row) / (input.Height / 2);
-                    latTemp = 1 - ((float)Math.Sqrt(Math.Abs(dist)));
+                    latTemp = 1 - dist*dist;
                     altTemp = MAXALTIMPACT * input.getTile(row, col).Value;
                     temp.getTile(row, col).Value = Math.Max(0, latTemp - altTemp);
                 }
@@ -180,122 +192,55 @@ namespace ProjectCeres
             return Temperature(input, 0.5f);
         }
 
-        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff, int[,] newRank)
+        public static RectGrid BiomeMap(RectGrid input, Project proj, int cutoff, int[] newRank)
         {
             RectGrid moistureGrid = Biomes.moisture(input, proj, cutoff);
             RectGrid tempGrid = Biomes.Temperature(input);
             RectGrid biomeGrid = new RectGrid(input.Height, input.Width);
 
+            int[,] converted = new int[6, 6];
 
-            //RANKING SYSTEM, NO ICE
-            //1:tundra
-            //2:grassland
-            //3:woodland
-            //4:boreal forest
-            //5:seasonal forest
-            //6:temperate rainforest
-            //7:tropical rainforest
-            //8:savanna
-            //9:desert
-
-            for (int row = 0; row < input.Height; row++)
+            for(int i = 0; i<6; i++)
             {
-                for (int col = 0; col < input.Width; col++)
+                for(int j = 0; j<6; j++)
                 {
-                    //DRYER Moisture
-                    if (moistureGrid.getTile(row, col).Value < .2)
-                    {
-                        if (tempGrid.getTile(row, col).Value < .2)
-                            biomeGrid.getTile(row, col).Rank = 1;
-                        else if (tempGrid.getTile(row, col).Value >= .2 & tempGrid.getTile(row, col).Value < .4)
-                            biomeGrid.getTile(row, col).Rank = 2;
-                        else if (tempGrid.getTile(row, col).Value >= .4)
-                            biomeGrid.getTile(row, col).Rank = 9;
-
-                    }
-
-                    //DRY Moisture
-                    if (moistureGrid.getTile(row, col).Value >= .2 & moistureGrid.getTile(row, col).Value < .4)
-                    {
-                        if (tempGrid.getTile(row, col).Value < .2)
-                            biomeGrid.getTile(row, col).Rank = 1;
-                        else if (tempGrid.getTile(row, col).Value >= .2 & tempGrid.getTile(row, col).Value < .6)
-                            biomeGrid.getTile(row, col).Rank = 3;
-                        else if (tempGrid.getTile(row, col).Value >= .6)
-                            biomeGrid.getTile(row, col).Rank = 8;
-
-                    }
-
-                    //WET Moisture 
-                    if (moistureGrid.getTile(row, col).Value >= .4 & moistureGrid.getTile(row, col).Value < .6)
-                    {
-                        if (tempGrid.getTile(row, col).Value < .2)
-                            biomeGrid.getTile(row, col).Rank = 1;
-                        else if (tempGrid.getTile(row, col).Value >= .2 & tempGrid.getTile(row, col).Value < .4)
-                            biomeGrid.getTile(row, col).Rank = 4;
-                        else if (tempGrid.getTile(row, col).Value >= .4 & tempGrid.getTile(row, col).Value < .6)
-                            biomeGrid.getTile(row, col).Rank = 3;
-                        else if (tempGrid.getTile(row, col).Value >= .6)
-                            biomeGrid.getTile(row, col).Rank = 8;
-
-                    }
-
-                    //WETTER Moisture 
-                    if (moistureGrid.getTile(row, col).Value >= .6 & moistureGrid.getTile(row, col).Value < .8)
-                    {
-                        if (tempGrid.getTile(row, col).Value < .2)
-                            biomeGrid.getTile(row, col).Rank = 1;
-                        else if (tempGrid.getTile(row, col).Value >= .2 & tempGrid.getTile(row, col).Value < .4)
-                            biomeGrid.getTile(row, col).Rank = 4;
-                        else if (tempGrid.getTile(row, col).Value >= .4 & tempGrid.getTile(row, col).Value < .6)
-                            biomeGrid.getTile(row, col).Rank = 5;
-                        else if (tempGrid.getTile(row, col).Value >= .6)
-                            biomeGrid.getTile(row, col).Rank = 7;
-
-                    }
-
-                    //WETTEST Moisture 
-                    if (moistureGrid.getTile(row, col).Value >= .8)
-                    {
-                        if (tempGrid.getTile(row, col).Value < .2)
-                            biomeGrid.getTile(row, col).Rank = 1;
-                        else if (tempGrid.getTile(row, col).Value >= .2 & tempGrid.getTile(row, col).Value < .4)
-                            biomeGrid.getTile(row, col).Rank = 4;
-                        else if (tempGrid.getTile(row, col).Value >= .4 & tempGrid.getTile(row, col).Value < .6)
-                            biomeGrid.getTile(row, col).Rank = 6;
-                        else if (tempGrid.getTile(row, col).Value >= .6)
-                            biomeGrid.getTile(row, col).Rank = 7;
-
-                    }
+                    converted[i, j] = newRank[biomeTable[i,j]];
                 }
             }
 
-            for (int row = 0; row < biomeGrid.Height; row++)
+            int tempDex;
+            int moistDex;
+            for(int row = 0; row < input.Height; row++)
             {
-                for (int col = 0; col < biomeGrid.Width; col++)
+                for (int col = 0; col < input.Width; col++)
                 {
-                    if (biomeGrid.getTile(row, col).Rank == 1)
-                        biomeGrid.getTile(row, col).Rank = newRank[0,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 2)
-                        biomeGrid.getTile(row, col).Rank = newRank[1,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 3)
-                        biomeGrid.getTile(row, col).Rank = newRank[2,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 4)
-                        biomeGrid.getTile(row, col).Rank = newRank[3,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 5)
-                        biomeGrid.getTile(row, col).Rank = newRank[4,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 6)
-                        biomeGrid.getTile(row, col).Rank = newRank[5,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 7)
-                        biomeGrid.getTile(row, col).Rank = newRank[6,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 8)
-                        biomeGrid.getTile(row, col).Rank = newRank[7,1];
-                    else if (biomeGrid.getTile(row, col).Rank == 9)
-                        biomeGrid.getTile(row, col).Rank = newRank[8,1];
+                    if (input.getTile(row,col).Value<proj.SeaLevel)
+                    {
+                        biomeGrid.getTile(row, col).Rank = 9;
+                        continue;
+                    }
+                    moistDex = (int)(moistureGrid.getTile(row,col).Value * 5);
+                    tempDex = (int)(tempGrid.getTile(row, col).Value * 5);
+                    biomeGrid.getTile(row, col).Rank = converted[moistDex,tempDex];
                 }
             }
 
             return biomeGrid;
+        }
+        public static Bitmap renderBiomes(RectGrid rg)
+        {
+           
+            Bitmap img = new Bitmap(rg.Width, rg.Height);
+            int toggle;
+            for(int row = 0; row < rg.Height; row++)
+            {
+                for (int col = 0; col < rg.Width; col++)
+                {
+                    toggle = rg.getTile(row, col).Rank;
+                    img.SetPixel(col, row, colors[toggle]);
+                }
+            }
+            return img;
         }
     }
 }

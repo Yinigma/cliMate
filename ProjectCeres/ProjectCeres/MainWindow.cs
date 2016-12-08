@@ -14,12 +14,11 @@ namespace ProjectCeres
 {
     public partial class MainWindow : Form
     {
-        int[,] replacements = new int[9, 2] { {1,1}, {2,2}, {3,3}, {4,4}, {5,5}, {6,6}, {7,7}, {8,8}, {9,9} };
+        int[] replacements = {0,1,2,3,4,5,6,7,8,9,10};
         int counterDB;
         Project currentProject;
         NodeMap map;
         Node selectedNode;
-        private static readonly ColorGrad.gradElement[][] DISPMODES = { ColorGrad.LandGradient, ColorGrad.tempGradient };
 
         public MainWindow()
         {
@@ -30,6 +29,15 @@ namespace ProjectCeres
             mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
             DisplayOptionBox.SelectedIndex = 0;
             counterDB = 0;
+            tundraBox.SelectedIndex = 0;
+            grassBox.SelectedIndex = 1;
+            woodBox.SelectedIndex = 2;
+            borBox.SelectedIndex = 3;
+            seasonBox.SelectedIndex = 4;
+            temperBox.SelectedIndex = 5;
+            tropBox.SelectedIndex = 6;
+            savBox.SelectedIndex = 7;
+            desertBox.SelectedIndex = 8;
         }
 
         //Draws the equiGrid
@@ -160,65 +168,17 @@ namespace ProjectCeres
                 }
                 else if (DisplayOptionBox.SelectedIndex == 3)
                 {
-                    if (tundraBox.SelectedIndex != 0)
-                    {
-                        replacements[0, 1] = tundraBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (grassBox.SelectedIndex != 1)
-                    {
-                        replacements[1, 1] = grassBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (woodBox.SelectedIndex != 2)
-                    {
-                        replacements[2, 1] = woodBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (borBox.SelectedIndex != 3)
-                    {
-                        replacements[3, 1] = borBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (seasonBox.SelectedIndex != 4)
-                    {
-                        replacements[4, 1] = seasonBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (temperBox.SelectedIndex != 5)
-                    {
-                        replacements[5, 1] = temperBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (tropBox.SelectedIndex != 6)
-                    {
-                        replacements[6, 1] = tropBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (savBox.SelectedIndex != 7)
-                    {
-                        replacements[7, 1] = savBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else if (desertBox.SelectedIndex != 8)
-                    {
-                        replacements[8, 1] = desertBox.SelectedIndex + 1;
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        // mapDisplay.Image = biome.gridToBitmap(); 
-                    }
-                    else
-                    {
-                        RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
-                        //mapDisplay.Image = biome.gridToBitmap(); 
-                    }
+                    replacements[0] = tundraBox.SelectedIndex;
+                    replacements[1] = grassBox.SelectedIndex;
+                    replacements[2] = woodBox.SelectedIndex;
+                    replacements[3] = borBox.SelectedIndex;
+                    replacements[4] = seasonBox.SelectedIndex;
+                    replacements[5] = temperBox.SelectedIndex;
+                    replacements[6] = tropBox.SelectedIndex;
+                    replacements[7] = savBox.SelectedIndex;
+                    replacements[8] = desertBox.SelectedIndex;
+                    RectGrid biome = Biomes.BiomeMap(selectedNode.getOutputGrid(), currentProject, 3 * currentProject.Frequency, replacements);
+                    mapDisplay.Image = Biomes.renderBiomes(biome);
                 }
             }
         }
@@ -409,7 +369,5 @@ namespace ProjectCeres
 
             }
         }
-
-
     }
 }
