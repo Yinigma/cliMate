@@ -40,8 +40,8 @@ namespace ProjectCeres
             this.plateSimButton = new System.Windows.Forms.ToolStripButton();
             this.DrawMapButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.combinerButton = new System.Windows.Forms.ToolStripButton();
-            this.clampButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.outputButton = new System.Windows.Forms.ToolStripButton();
@@ -136,8 +136,8 @@ namespace ProjectCeres
             this.plateSimButton,
             this.DrawMapButton,
             this.toolStripSeparator1,
-            this.combinerButton,
-            this.clampButton,
+            this.toolStripButton5,
+            this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripSeparator2,
             this.outputButton,
@@ -158,7 +158,7 @@ namespace ProjectCeres
             this.fileImportButton.Image = global::ProjectCeres.Properties.Resources.file;
             this.fileImportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileImportButton.Name = "fileImportButton";
-            this.fileImportButton.Size = new System.Drawing.Size(29, 24);
+            this.fileImportButton.Size = new System.Drawing.Size(22, 24);
             this.fileImportButton.Text = "File Import";
             this.fileImportButton.Click += new System.EventHandler(this.fileImportButton_Click);
             // 
@@ -168,7 +168,7 @@ namespace ProjectCeres
             this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin2;
             this.perlinNoiseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.perlinNoiseButton.Name = "perlinNoiseButton";
-            this.perlinNoiseButton.Size = new System.Drawing.Size(29, 24);
+            this.perlinNoiseButton.Size = new System.Drawing.Size(22, 24);
             this.perlinNoiseButton.Text = "Noise Node";
             this.perlinNoiseButton.Click += new System.EventHandler(this.perlinNoiseButton_Click);
             // 
@@ -178,7 +178,7 @@ namespace ProjectCeres
             this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics2;
             this.plateSimButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.plateSimButton.Name = "plateSimButton";
-            this.plateSimButton.Size = new System.Drawing.Size(29, 24);
+            this.plateSimButton.Size = new System.Drawing.Size(22, 24);
             this.plateSimButton.Text = "Tectonic Node";
             // 
             // DrawMapButton
@@ -187,34 +187,32 @@ namespace ProjectCeres
             this.DrawMapButton.Image = global::ProjectCeres.Properties.Resources.drawing;
             this.DrawMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawMapButton.Name = "DrawMapButton";
-            this.DrawMapButton.Size = new System.Drawing.Size(29, 24);
+            this.DrawMapButton.Size = new System.Drawing.Size(22, 24);
             this.DrawMapButton.Text = "Drawing Node";
             this.DrawMapButton.Click += new System.EventHandler(this.DrawMapButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(22, 6);
             // 
-            // combinerButton
+            // toolStripButton5
             // 
-            this.combinerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.combinerButton.Image = ((System.Drawing.Image)(resources.GetObject("combinerButton.Image")));
-            this.combinerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.combinerButton.Name = "combinerButton";
-            this.combinerButton.Size = new System.Drawing.Size(29, 24);
-            this.combinerButton.Text = "Combiner";
-            this.combinerButton.Click += new System.EventHandler(this.combinerButton_Click);
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton5.Text = "toolStripButton5";
             // 
-            // clampButton
+            // toolStripButton6
             // 
-            this.clampButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clampButton.Image = ((System.Drawing.Image)(resources.GetObject("clampButton.Image")));
-            this.clampButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.clampButton.Name = "clampButton";
-            this.clampButton.Size = new System.Drawing.Size(29, 24);
-            this.clampButton.Text = "Clamp";
-            this.clampButton.Click += new System.EventHandler(this.clampButton_Click);
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton6.Text = "toolStripButton6";
             // 
             // toolStripButton7
             // 
@@ -222,13 +220,13 @@ namespace ProjectCeres
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(22, 24);
             this.toolStripButton7.Text = "toolStripButton7";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(22, 6);
             // 
             // outputButton
             // 
@@ -236,14 +234,14 @@ namespace ProjectCeres
             this.outputButton.Image = global::ProjectCeres.Properties.Resources.output;
             this.outputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.outputButton.Name = "outputButton";
-            this.outputButton.Size = new System.Drawing.Size(29, 24);
+            this.outputButton.Size = new System.Drawing.Size(22, 24);
             this.outputButton.Text = "Output Node";
             this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(22, 6);
             // 
             // debugButton
             // 
@@ -251,7 +249,7 @@ namespace ProjectCeres
             this.debugButton.Image = ((System.Drawing.Image)(resources.GetObject("debugButton.Image")));
             this.debugButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugButton.Name = "debugButton";
-            this.debugButton.Size = new System.Drawing.Size(29, 24);
+            this.debugButton.Size = new System.Drawing.Size(22, 24);
             this.debugButton.Text = "Debug";
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
@@ -261,7 +259,7 @@ namespace ProjectCeres
             this.debugInputButton.Image = ((System.Drawing.Image)(resources.GetObject("debugInputButton.Image")));
             this.debugInputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugInputButton.Name = "debugInputButton";
-            this.debugInputButton.Size = new System.Drawing.Size(29, 24);
+            this.debugInputButton.Size = new System.Drawing.Size(22, 24);
             this.debugInputButton.Text = "debugInput";
             this.debugInputButton.Click += new System.EventHandler(this.debugInputButton_Click);
             // 
@@ -591,15 +589,9 @@ namespace ProjectCeres
             // seasonLabel
             // 
             this.seasonLabel.AutoSize = true;
-<<<<<<< HEAD
-            this.seasonLabel.Location = new System.Drawing.Point(11, 200);
-            this.seasonLabel.Name = "seasonLabel";
-            this.seasonLabel.Size = new System.Drawing.Size(43, 13);
-=======
             this.seasonLabel.Location = new System.Drawing.Point(37, 80);
             this.seasonLabel.Name = "seasonLabel";
             this.seasonLabel.Size = new System.Drawing.Size(152, 13);
->>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.seasonLabel.TabIndex = 4;
             this.seasonLabel.Text = "Season (Northern Hemisphere)";
             // 
@@ -611,11 +603,7 @@ namespace ProjectCeres
             "Normal",
             "Summer",
             "Winter"});
-<<<<<<< HEAD
-            this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
-=======
             this.SeasonSwitcher.Location = new System.Drawing.Point(44, 96);
->>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.SeasonSwitcher.Name = "SeasonSwitcher";
             this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
             this.SeasonSwitcher.TabIndex = 3;
@@ -624,11 +612,7 @@ namespace ProjectCeres
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-<<<<<<< HEAD
-            this.DispLabel.Location = new System.Drawing.Point(8, 141);
-=======
             this.DispLabel.Location = new System.Drawing.Point(44, 18);
->>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.DispLabel.Name = "DispLabel";
             this.DispLabel.Size = new System.Drawing.Size(41, 13);
             this.DispLabel.TabIndex = 2;
@@ -644,29 +628,12 @@ namespace ProjectCeres
             "Temperature",
             "Moisture",
             "Biomes"});
-<<<<<<< HEAD
-            this.DisplayOptionBox.Location = new System.Drawing.Point(8, 157);
-=======
             this.DisplayOptionBox.Location = new System.Drawing.Point(44, 34);
->>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             this.DisplayOptionBox.Name = "DisplayOptionBox";
             this.DisplayOptionBox.Size = new System.Drawing.Size(134, 21);
             this.DisplayOptionBox.TabIndex = 1;
             this.DisplayOptionBox.SelectedIndexChanged += new System.EventHandler(this.DisplayOptionBox_SelectedIndexChanged);
             // 
-<<<<<<< HEAD
-            // mapDisplay
-            // 
-            this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
-            this.mapDisplay.Location = new System.Drawing.Point(205, 0);
-            this.mapDisplay.Name = "mapDisplay";
-            this.mapDisplay.Size = new System.Drawing.Size(633, 387);
-            this.mapDisplay.TabIndex = 0;
-            this.mapDisplay.TabStop = false;
-            this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
-            // 
-=======
->>>>>>> 87d06e579795988c5bc2cbf8161e93612b504433
             // testTab
             // 
             this.testTab.Controls.Add(this.testPanel);
@@ -791,8 +758,8 @@ namespace ProjectCeres
         private System.Windows.Forms.ToolStripButton plateSimButton;
         private System.Windows.Forms.ToolStripButton DrawMapButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton combinerButton;
-        private System.Windows.Forms.ToolStripButton clampButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.Label DispLabel;
         private System.Windows.Forms.ComboBox DisplayOptionBox;
