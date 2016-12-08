@@ -147,7 +147,7 @@ namespace ProjectCeres
             this.NodeToolStrip.Location = new System.Drawing.Point(3, 3);
             this.NodeToolStrip.Name = "NodeToolStrip";
             this.NodeToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.NodeToolStrip.Size = new System.Drawing.Size(32, 381);
+            this.NodeToolStrip.Size = new System.Drawing.Size(25, 381);
             this.NodeToolStrip.TabIndex = 0;
             this.NodeToolStrip.Text = "toolStrip1";
             // 
@@ -157,7 +157,7 @@ namespace ProjectCeres
             this.fileImportButton.Image = global::ProjectCeres.Properties.Resources.file;
             this.fileImportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileImportButton.Name = "fileImportButton";
-            this.fileImportButton.Size = new System.Drawing.Size(29, 24);
+            this.fileImportButton.Size = new System.Drawing.Size(22, 24);
             this.fileImportButton.Text = "File Import";
             this.fileImportButton.Click += new System.EventHandler(this.fileImportButton_Click);
             // 
@@ -167,7 +167,7 @@ namespace ProjectCeres
             this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin2;
             this.perlinNoiseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.perlinNoiseButton.Name = "perlinNoiseButton";
-            this.perlinNoiseButton.Size = new System.Drawing.Size(29, 24);
+            this.perlinNoiseButton.Size = new System.Drawing.Size(22, 24);
             this.perlinNoiseButton.Text = "Noise Node";
             this.perlinNoiseButton.Click += new System.EventHandler(this.perlinNoiseButton_Click);
             // 
@@ -177,7 +177,7 @@ namespace ProjectCeres
             this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics2;
             this.plateSimButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.plateSimButton.Name = "plateSimButton";
-            this.plateSimButton.Size = new System.Drawing.Size(29, 24);
+            this.plateSimButton.Size = new System.Drawing.Size(22, 24);
             this.plateSimButton.Text = "Tectonic Node";
             // 
             // DrawMapButton
@@ -186,14 +186,14 @@ namespace ProjectCeres
             this.DrawMapButton.Image = global::ProjectCeres.Properties.Resources.drawing;
             this.DrawMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawMapButton.Name = "DrawMapButton";
-            this.DrawMapButton.Size = new System.Drawing.Size(29, 24);
+            this.DrawMapButton.Size = new System.Drawing.Size(22, 24);
             this.DrawMapButton.Text = "Drawing Node";
             this.DrawMapButton.Click += new System.EventHandler(this.DrawMapButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(22, 6);
             // 
             // combinerButton
             // 
@@ -201,7 +201,7 @@ namespace ProjectCeres
             this.combinerButton.Image = ((System.Drawing.Image)(resources.GetObject("combinerButton.Image")));
             this.combinerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.combinerButton.Name = "combinerButton";
-            this.combinerButton.Size = new System.Drawing.Size(29, 24);
+            this.combinerButton.Size = new System.Drawing.Size(22, 24);
             this.combinerButton.Text = "Combiner";
             this.combinerButton.Click += new System.EventHandler(this.combinerButton_Click);
             // 
@@ -211,7 +211,7 @@ namespace ProjectCeres
             this.clampButton.Image = ((System.Drawing.Image)(resources.GetObject("clampButton.Image")));
             this.clampButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.clampButton.Name = "clampButton";
-            this.clampButton.Size = new System.Drawing.Size(29, 24);
+            this.clampButton.Size = new System.Drawing.Size(22, 24);
             this.clampButton.Text = "toolStripButton7";
             this.clampButton.ToolTipText = "Clamp";
             this.clampButton.Click += new System.EventHandler(this.clampButton_Click);
@@ -219,7 +219,7 @@ namespace ProjectCeres
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(22, 6);
             // 
             // outputButton
             // 
@@ -227,14 +227,14 @@ namespace ProjectCeres
             this.outputButton.Image = global::ProjectCeres.Properties.Resources.output;
             this.outputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.outputButton.Name = "outputButton";
-            this.outputButton.Size = new System.Drawing.Size(29, 24);
+            this.outputButton.Size = new System.Drawing.Size(22, 24);
             this.outputButton.Text = "Output Node";
             this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(22, 6);
             // 
             // debugButton
             // 
@@ -242,7 +242,7 @@ namespace ProjectCeres
             this.debugButton.Image = ((System.Drawing.Image)(resources.GetObject("debugButton.Image")));
             this.debugButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugButton.Name = "debugButton";
-            this.debugButton.Size = new System.Drawing.Size(29, 24);
+            this.debugButton.Size = new System.Drawing.Size(22, 24);
             this.debugButton.Text = "Debug";
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
@@ -252,7 +252,7 @@ namespace ProjectCeres
             this.debugInputButton.Image = ((System.Drawing.Image)(resources.GetObject("debugInputButton.Image")));
             this.debugInputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugInputButton.Name = "debugInputButton";
-            this.debugInputButton.Size = new System.Drawing.Size(29, 24);
+            this.debugInputButton.Size = new System.Drawing.Size(22, 24);
             this.debugInputButton.Text = "debugInput";
             this.debugInputButton.Click += new System.EventHandler(this.debugInputButton_Click);
             // 
@@ -262,7 +262,7 @@ namespace ProjectCeres
             this.DeleteAll.Image = global::ProjectCeres.Properties.Resources.DeleteAll;
             this.DeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteAll.Name = "DeleteAll";
-            this.DeleteAll.Size = new System.Drawing.Size(29, 24);
+            this.DeleteAll.Size = new System.Drawing.Size(22, 24);
             this.DeleteAll.Text = "Delete All";
             this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
             // 
@@ -572,9 +572,9 @@ namespace ProjectCeres
             // seasonLabel
             // 
             this.seasonLabel.AutoSize = true;
-            this.seasonLabel.Location = new System.Drawing.Point(11, 200);
+            this.seasonLabel.Location = new System.Drawing.Point(11, 67);
             this.seasonLabel.Name = "seasonLabel";
-            this.seasonLabel.Size = new System.Drawing.Size(43, 13);
+            this.seasonLabel.Size = new System.Drawing.Size(152, 13);
             this.seasonLabel.TabIndex = 4;
             this.seasonLabel.Text = "Season (Northern Hemisphere)";
             // 
@@ -586,7 +586,7 @@ namespace ProjectCeres
             "Normal",
             "Summer",
             "Winter"});
-            this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
+            this.SeasonSwitcher.Location = new System.Drawing.Point(12, 83);
             this.SeasonSwitcher.Name = "SeasonSwitcher";
             this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
             this.SeasonSwitcher.TabIndex = 3;
@@ -595,7 +595,7 @@ namespace ProjectCeres
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-            this.DispLabel.Location = new System.Drawing.Point(8, 141);
+            this.DispLabel.Location = new System.Drawing.Point(9, 16);
             this.DispLabel.Name = "DispLabel";
             this.DispLabel.Size = new System.Drawing.Size(41, 13);
             this.DispLabel.TabIndex = 2;
@@ -611,28 +611,18 @@ namespace ProjectCeres
             "Temperature",
             "Moisture",
             "Biomes"});
-            this.DisplayOptionBox.Location = new System.Drawing.Point(8, 157);
+            this.DisplayOptionBox.Location = new System.Drawing.Point(12, 32);
             this.DisplayOptionBox.Name = "DisplayOptionBox";
             this.DisplayOptionBox.Size = new System.Drawing.Size(134, 21);
             this.DisplayOptionBox.TabIndex = 1;
             this.DisplayOptionBox.SelectedIndexChanged += new System.EventHandler(this.DisplayOptionBox_SelectedIndexChanged);
             // 
-<<<<<<< HEAD
             // mapDisplay
             // 
             this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
-            this.mapDisplay.Location = new System.Drawing.Point(245, -3);
+            this.mapDisplay.Location = new System.Drawing.Point(229, 0);
             this.mapDisplay.Name = "mapDisplay";
-            this.mapDisplay.Size = new System.Drawing.Size(597, 387);
-=======
-
-            // mapDisplay
-            // 
-            this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
-            this.mapDisplay.Location = new System.Drawing.Point(205, 0);
-            this.mapDisplay.Name = "mapDisplay";
-            this.mapDisplay.Size = new System.Drawing.Size(633, 387);
->>>>>>> 168c3da29b8e36ffc5c1cb359d947cfa68816a37
+            this.mapDisplay.Size = new System.Drawing.Size(609, 387);
             this.mapDisplay.TabIndex = 0;
             this.mapDisplay.TabStop = false;
             this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
