@@ -22,7 +22,10 @@ namespace ProjectCeres
 
         public MainWindow()
         {
-            
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.Show();
+            System.Threading.Thread.Sleep(3000);
+            splashScreen.Close();
             InitializeComponent();
             testPanel.Click += TestPanel_Click;
             SetProject(new Project());

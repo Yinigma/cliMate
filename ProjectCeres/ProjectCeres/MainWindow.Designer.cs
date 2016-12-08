@@ -572,9 +572,9 @@ namespace ProjectCeres
             // seasonLabel
             // 
             this.seasonLabel.AutoSize = true;
-            this.seasonLabel.Location = new System.Drawing.Point(37, 80);
+            this.seasonLabel.Location = new System.Drawing.Point(11, 200);
             this.seasonLabel.Name = "seasonLabel";
-            this.seasonLabel.Size = new System.Drawing.Size(152, 13);
+            this.seasonLabel.Size = new System.Drawing.Size(43, 13);
             this.seasonLabel.TabIndex = 4;
             this.seasonLabel.Text = "Season (Northern Hemisphere)";
             // 
@@ -586,7 +586,7 @@ namespace ProjectCeres
             "Normal",
             "Summer",
             "Winter"});
-            this.SeasonSwitcher.Location = new System.Drawing.Point(44, 96);
+            this.SeasonSwitcher.Location = new System.Drawing.Point(8, 219);
             this.SeasonSwitcher.Name = "SeasonSwitcher";
             this.SeasonSwitcher.Size = new System.Drawing.Size(134, 21);
             this.SeasonSwitcher.TabIndex = 3;
@@ -595,7 +595,7 @@ namespace ProjectCeres
             // DispLabel
             // 
             this.DispLabel.AutoSize = true;
-            this.DispLabel.Location = new System.Drawing.Point(44, 18);
+            this.DispLabel.Location = new System.Drawing.Point(8, 141);
             this.DispLabel.Name = "DispLabel";
             this.DispLabel.Size = new System.Drawing.Size(41, 13);
             this.DispLabel.TabIndex = 2;
@@ -611,18 +611,28 @@ namespace ProjectCeres
             "Temperature",
             "Moisture",
             "Biomes"});
-            this.DisplayOptionBox.Location = new System.Drawing.Point(44, 34);
+            this.DisplayOptionBox.Location = new System.Drawing.Point(8, 157);
             this.DisplayOptionBox.Name = "DisplayOptionBox";
             this.DisplayOptionBox.Size = new System.Drawing.Size(134, 21);
             this.DisplayOptionBox.TabIndex = 1;
             this.DisplayOptionBox.SelectedIndexChanged += new System.EventHandler(this.DisplayOptionBox_SelectedIndexChanged);
             // 
+<<<<<<< HEAD
             // mapDisplay
             // 
             this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
             this.mapDisplay.Location = new System.Drawing.Point(245, -3);
             this.mapDisplay.Name = "mapDisplay";
             this.mapDisplay.Size = new System.Drawing.Size(597, 387);
+=======
+
+            // mapDisplay
+            // 
+            this.mapDisplay.InitialImage = global::ProjectCeres.Properties.Resources.bobrossEdit;
+            this.mapDisplay.Location = new System.Drawing.Point(205, 0);
+            this.mapDisplay.Name = "mapDisplay";
+            this.mapDisplay.Size = new System.Drawing.Size(633, 387);
+>>>>>>> 168c3da29b8e36ffc5c1cb359d947cfa68816a37
             this.mapDisplay.TabIndex = 0;
             this.mapDisplay.TabStop = false;
             this.mapDisplay.Click += new System.EventHandler(this.mapDisplay_Click);
@@ -716,6 +726,7 @@ namespace ProjectCeres
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CliMate";
             this.MainTabs.ResumeLayout(false);
             this.NodeTab.ResumeLayout(false);
