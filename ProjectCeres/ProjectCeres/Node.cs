@@ -152,6 +152,20 @@ namespace ProjectCeres
             return bmp;
         }
 
+        //Traverses tree and makes sure all nodes leading up to input are up-to-date
+        public virtual void updateInputs()
+        {
+            if (isValid())
+            {
+                return;
+            }
+            for(int i = 0; i < getOptional(); i++)
+            {
+                children[i].updateInputs();
+            }
+            doOperation();
+        }
+
         public int numInputs() { return children.Length; }
 
         public Node Mask { get { return mask; } set { mask = value; } }

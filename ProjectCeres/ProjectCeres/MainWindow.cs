@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Formatters.Soap;
+//using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -27,7 +27,6 @@ namespace ProjectCeres
             
             InitializeComponent();
             testPanel.Click += TestPanel_Click;
-            //DisplayOptionBox.
             SetProject(new Project());
             mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
             DisplayOptionBox.SelectedIndex = 0;

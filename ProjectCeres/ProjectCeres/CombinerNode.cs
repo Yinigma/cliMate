@@ -29,6 +29,7 @@ namespace ProjectCeres
             {
                 return;
             }
+            updateInputs();
             for(int r = 0; r<outGrid.Height; r++)
             {
                 for(int c = 0; c<outGrid.Width; c++)
