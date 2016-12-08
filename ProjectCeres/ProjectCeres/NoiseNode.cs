@@ -8,6 +8,7 @@ using SharpNoise.Modules;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class NoiseNode : InputNode
     {
         private Perlin nodePerlin;

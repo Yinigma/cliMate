@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Xml.Serialization;
 using System.IO;
 
 namespace ProjectCeres
@@ -236,8 +238,14 @@ namespace ProjectCeres
             saveProjectDialog.ShowDialog();
 
             //Save the project
+            /*FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
+            XmlSerializer serialize = new XmlSerializer(typeof(Project));
+            serialize.Serialize(saveStream, currentProject);
+            saveStream.Close();*/
+
             FileStream saveStream = new FileStream(saveProjectDialog.FileName, FileMode.Create);
-            SoapFormatter formatter = new SoapFormatter();
+
+            BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(saveStream, currentProject);
 
             saveStream.Close();
@@ -250,10 +258,11 @@ namespace ProjectCeres
 
             //Open the project
             FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
-            SoapFormatter formatter = new SoapFormatter();
+            BinaryFormatter formatter = new BinaryFormatter();
             currentProject = (Project)formatter.Deserialize(openStream);
 
             openStream.Close();
+            MessageBox.Show("" + currentProject.Frequency);
         }
     }
 }
