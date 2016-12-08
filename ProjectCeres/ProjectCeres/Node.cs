@@ -65,7 +65,7 @@ namespace ProjectCeres
         {
             for(int i = 0; i<getNeeded(); i++)
             {
-                if (children[i] != null)
+                if (children[i] == null)
                 {
                     return false;
                 }
@@ -155,10 +155,6 @@ namespace ProjectCeres
         //Traverses tree and makes sure all nodes leading up to input are up-to-date
         public virtual void updateInputs()
         {
-            if (isValid())
-            {
-                return;
-            }
             for(int i = 0; i < getOptional(); i++)
             {
                 children[i].updateInputs();
