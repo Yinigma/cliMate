@@ -28,10 +28,7 @@ namespace ProjectCeres
             InitializeComponent();
             testPanel.Click += TestPanel_Click;
             //DisplayOptionBox.
-            currentProject = new Project();
-            nodePanel.Map = currentProject.getMap();
-            nodePanel.CurrentNode = NodePanel.NONE;
-            selectedNode = null;
+            SetProject(new Project());
             mapDisplay.SizeMode = PictureBoxSizeMode.StretchImage;
             DisplayOptionBox.SelectedIndex = 0;
             counterDB = 0;
@@ -115,6 +112,18 @@ namespace ProjectCeres
             }
             counterDB++;
             testPanel.Update();
+        }
+
+        private void SetProject(Project project)
+        {
+            //Sets the current project to the given one
+            currentProject = project;
+            nodePanel.Map = currentProject.getMap();
+            nodePanel.CurrentNode = NodePanel.NONE;
+            selectedNode = null;
+
+            //Update teh map display too
+            UpdateMapDisplay();
         }
 
         private void UpdateMapDisplay()
@@ -259,7 +268,9 @@ namespace ProjectCeres
             //Open the project
             FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
-            currentProject = (Project)formatter.Deserialize(openStream);
+
+            Project openedProject = (Project)formatter.Deserialize(openStream);
+            SetProject(openedProject);
 
             openStream.Close();
             MessageBox.Show("" + currentProject.Frequency);
