@@ -63,9 +63,9 @@ namespace ProjectCeres
         //Checks to see if this node has all it's inputs and it's children have all their inputs, etc. 
         public bool isValid()
         {
-            for(int i = 0; i<this.getNeeded(); i++)
+            for(int i = 0; i<getNeeded(); i++)
             {
-                if (children[i] != null||!children[i].isValid())
+                if (children[i] != null)
                 {
                     return false;
                 }
@@ -150,6 +150,20 @@ namespace ProjectCeres
                 }
             }
             return bmp;
+        }
+
+        //Traverses tree and makes sure all nodes leading up to input are up-to-date
+        public virtual void updateInputs()
+        {
+            if (isValid())
+            {
+                return;
+            }
+            for(int i = 0; i < getOptional(); i++)
+            {
+                children[i].updateInputs();
+            }
+            doOperation();
         }
 
         public int numInputs() { return children.Length; }

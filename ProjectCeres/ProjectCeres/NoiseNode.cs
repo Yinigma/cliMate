@@ -8,6 +8,7 @@ using SharpNoise.Modules;
 
 namespace ProjectCeres
 {
+    [Serializable]
     public class NoiseNode : InputNode
     {
         private Perlin nodePerlin;
@@ -27,7 +28,7 @@ namespace ProjectCeres
                 for (int col = 0; col < map.Width; col++)
                 {
                     //Add the corresponding noise value to this pixel
-                    double noiseVal = nodePerlin.GetValue((double)row, (double)col, 0D);
+                    double noiseVal = nodePerlin.GetValue(row, col, 0D);
                     //GetValue returns a value between -1 and 1 with some error
                     noiseVal = (noiseVal + 1.0D) / 2.0D;
                     if (noiseVal>1.0D)

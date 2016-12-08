@@ -11,6 +11,7 @@ namespace ProjectCeres
     [Serializable]
     public class NodeMap
     {
+        [Serializable]
         public struct Edge
         {
             public guiNode n1;
@@ -20,6 +21,7 @@ namespace ProjectCeres
             public int dex;
         }
 
+        [Serializable]
         public struct guiNode
         {
             public Node node;
@@ -73,6 +75,12 @@ namespace ProjectCeres
         }
 
         public void AddNode(guiNode n) { nodes.Add(n); }
+
+        public void RemoveAllOfIt()
+        {
+            nodes.Clear();
+            connections.Clear();
+        }
 
         public void AddEdge(Edge e)
         {
