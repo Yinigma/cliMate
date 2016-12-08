@@ -283,14 +283,20 @@ namespace ProjectCeres
             openProjectDialog.ShowDialog();
 
             //Open the project
-            FileStream openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
-            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream openStream;
+            try
+            {
+                openStream = new FileStream(openProjectDialog.FileName, FileMode.Open);
+                BinaryFormatter formatter = new BinaryFormatter();
+                Project openedProject = (Project)formatter.Deserialize(openStream);
+                SetProject(openedProject);
+                openStream.Close();
+                MessageBox.Show("" + currentProject.Frequency);
+            }
+            catch (FileNotFoundException)
+            {
 
-            Project openedProject = (Project)formatter.Deserialize(openStream);
-            SetProject(openedProject);
-
-            openStream.Close();
-            MessageBox.Show("" + currentProject.Frequency);
+            }
         }
     }
 }
