@@ -74,6 +74,12 @@ namespace ProjectCeres
 
         public void AddNode(guiNode n) { nodes.Add(n); }
 
+        public void RemoveAllOfIt()
+        {
+            nodes.Clear();
+            connections.Clear();
+        }
+
         public void AddEdge(Edge e)
         {
             

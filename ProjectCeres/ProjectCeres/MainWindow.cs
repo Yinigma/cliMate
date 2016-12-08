@@ -227,5 +227,21 @@ namespace ProjectCeres
         {
             UpdateMapDisplay();
         }
+
+        private void DeleteAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedNode = null;
+                currentProject.ClearMap();
+            } catch (System.NullReferenceException)
+            {
+                MessageBox.Show("lol");
+            }
+            mapDisplay.Image = null;
+            UpdateMapDisplay();
+            testPanel.Update();
+            nodePanel.UpdateGraph();
+        }
     }
 }

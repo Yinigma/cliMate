@@ -39,6 +39,10 @@ namespace ProjectCeres
         {
             return map;
         }
+        public void ClearMap()
+        {
+            map.RemoveAllOfIt();
+        }
         public GridDisplayEquiRect EquiDisp { get { return equiDisp; } }
         public int Frequency { get { return frequency; } }
         public float SeaLevel { get { return seaLevel; } }

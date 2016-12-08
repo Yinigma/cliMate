@@ -48,6 +48,7 @@ namespace ProjectCeres
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.debugButton = new System.Windows.Forms.ToolStripButton();
             this.debugInputButton = new System.Windows.Forms.ToolStripButton();
+            this.DeleteAll = new System.Windows.Forms.ToolStripButton();
             this.imageTab = new System.Windows.Forms.TabPage();
             this.seasonLabel = new System.Windows.Forms.Label();
             this.SeasonSwitcher = new System.Windows.Forms.ComboBox();
@@ -120,7 +121,8 @@ namespace ProjectCeres
             this.outputButton,
             this.toolStripSeparator3,
             this.debugButton,
-            this.debugInputButton});
+            this.debugInputButton,
+            this.DeleteAll});
             this.NodeToolStrip.Location = new System.Drawing.Point(3, 3);
             this.NodeToolStrip.Name = "NodeToolStrip";
             this.NodeToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -134,7 +136,7 @@ namespace ProjectCeres
             this.fileImportButton.Image = global::ProjectCeres.Properties.Resources.file;
             this.fileImportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileImportButton.Name = "fileImportButton";
-            this.fileImportButton.Size = new System.Drawing.Size(22, 24);
+            this.fileImportButton.Size = new System.Drawing.Size(29, 24);
             this.fileImportButton.Text = "File Import";
             this.fileImportButton.Click += new System.EventHandler(this.fileImportButton_Click);
             // 
@@ -144,7 +146,7 @@ namespace ProjectCeres
             this.perlinNoiseButton.Image = global::ProjectCeres.Properties.Resources.perlin2;
             this.perlinNoiseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.perlinNoiseButton.Name = "perlinNoiseButton";
-            this.perlinNoiseButton.Size = new System.Drawing.Size(22, 24);
+            this.perlinNoiseButton.Size = new System.Drawing.Size(29, 24);
             this.perlinNoiseButton.Text = "Noise Node";
             this.perlinNoiseButton.Click += new System.EventHandler(this.perlinNoiseButton_Click);
             // 
@@ -154,7 +156,7 @@ namespace ProjectCeres
             this.plateSimButton.Image = global::ProjectCeres.Properties.Resources.tectonics2;
             this.plateSimButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.plateSimButton.Name = "plateSimButton";
-            this.plateSimButton.Size = new System.Drawing.Size(22, 24);
+            this.plateSimButton.Size = new System.Drawing.Size(29, 24);
             this.plateSimButton.Text = "Tectonic Node";
             // 
             // DrawMapButton
@@ -163,14 +165,14 @@ namespace ProjectCeres
             this.DrawMapButton.Image = global::ProjectCeres.Properties.Resources.drawing;
             this.DrawMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawMapButton.Name = "DrawMapButton";
-            this.DrawMapButton.Size = new System.Drawing.Size(22, 24);
+            this.DrawMapButton.Size = new System.Drawing.Size(29, 24);
             this.DrawMapButton.Text = "Drawing Node";
             this.DrawMapButton.Click += new System.EventHandler(this.DrawMapButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(22, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(29, 6);
             // 
             // toolStripButton5
             // 
@@ -187,7 +189,7 @@ namespace ProjectCeres
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton6.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton6.Text = "toolStripButton6";
             // 
             // toolStripButton7
@@ -196,13 +198,13 @@ namespace ProjectCeres
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton7.Text = "toolStripButton7";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(22, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(29, 6);
             // 
             // outputButton
             // 
@@ -210,14 +212,14 @@ namespace ProjectCeres
             this.outputButton.Image = global::ProjectCeres.Properties.Resources.output;
             this.outputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.outputButton.Name = "outputButton";
-            this.outputButton.Size = new System.Drawing.Size(22, 24);
+            this.outputButton.Size = new System.Drawing.Size(29, 24);
             this.outputButton.Text = "Output Node";
             this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(22, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(29, 6);
             // 
             // debugButton
             // 
@@ -225,7 +227,7 @@ namespace ProjectCeres
             this.debugButton.Image = ((System.Drawing.Image)(resources.GetObject("debugButton.Image")));
             this.debugButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugButton.Name = "debugButton";
-            this.debugButton.Size = new System.Drawing.Size(22, 24);
+            this.debugButton.Size = new System.Drawing.Size(29, 24);
             this.debugButton.Text = "Debug";
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
@@ -235,9 +237,19 @@ namespace ProjectCeres
             this.debugInputButton.Image = ((System.Drawing.Image)(resources.GetObject("debugInputButton.Image")));
             this.debugInputButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.debugInputButton.Name = "debugInputButton";
-            this.debugInputButton.Size = new System.Drawing.Size(22, 24);
+            this.debugInputButton.Size = new System.Drawing.Size(29, 24);
             this.debugInputButton.Text = "debugInput";
             this.debugInputButton.Click += new System.EventHandler(this.debugInputButton_Click);
+            // 
+            // DeleteAll
+            // 
+            this.DeleteAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteAll.Image = global::ProjectCeres.Properties.Resources.DeleteAll;
+            this.DeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteAll.Name = "DeleteAll";
+            this.DeleteAll.Size = new System.Drawing.Size(22, 24);
+            this.DeleteAll.Text = "Delete All";
+            this.DeleteAll.Click += new System.EventHandler(this.DeleteAll_Click);
             // 
             // imageTab
             // 
@@ -426,6 +438,7 @@ namespace ProjectCeres
         private System.Windows.Forms.Panel testPanel;
         private System.Windows.Forms.Label seasonLabel;
         private System.Windows.Forms.ComboBox SeasonSwitcher;
+        private System.Windows.Forms.ToolStripButton DeleteAll;
     }
 }
 
